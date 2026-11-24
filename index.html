@@ -85,7 +85,9 @@ const CONFIG = {
     { name: 'Kind 3', emoji: '🐯' }
   ],
   // PIN für den Eltern-Bereich (bitte ändern)
-  PARENT_PIN: '1234'
+  PARENT_PIN: '1234',
+  // Fortschritt zurücksetzen: Ergebnisse vor diesem Zeitpunkt werden ignoriert (auf allen Geräten)
+  RESET_AT: '2026-11-24T16:33:23Z'
 };
 // ================================================================
 </script>
@@ -491,7 +493,8 @@ function allRows(kid) {
   const map = new Map();
   (remoteRows || []).forEach(r => map.set(r.id, r));
   lsGet('eng_hist', []).map(normRow).forEach(r => { if (!map.has(r.id)) map.set(r.id, r); });
-  let rows = [...map.values()].filter(r => r.kid && r.kid !== 'TEST');
+  const resetTs = new Date(CONFIG.RESET_AT || 0).getTime() || 0;
+  let rows = [...map.values()].filter(r => r.kid && r.kid !== 'TEST' && r.ts >= resetTs);
   if (kid != null) rows = rows.filter(r => r.kid === kid);
   return rows.sort((a, b) => b.ts - a.ts);
 }
@@ -510,7 +513,8 @@ async function refreshRemote(force) {
 }
 async function flushQueue() {
   if (!CONFIG.SHEET_URL) return;
-  const q = lsGet('eng_queue', []);
+  const resetTs = new Date(CONFIG.RESET_AT || 0).getTime() || 0;
+  const q = lsGet('eng_queue', []).filter(r => r.ts >= resetTs);
   const left = [];
   for (const rec of q) {
     try {
