@@ -118,44 +118,44 @@ const TOPICS = [
 
 const EXERCISES = [
   // ---------- can / can't ----------
-  { id: 'can-1', topic: 'can', title: 'can oder can\'t?', intro: OK + ' = kann &nbsp; ' + NO + ' = kann nicht', keep: true, items: [
-    MC('Holly ___ skate fast now. ' + OK, ['can', "can't"], 'can'),
-    MC('Luke ___ skate. He\'s into football. ' + NO, ['can', "can't"], "can't"),
-    MC('Dave ___ meet Luke now. Aunt Frances is there. ' + NO, ['can', "can't"], "can't"),
-    MC('Jay ___ sing and dance. ' + OK, ['can', "can't"], 'can'),
-    MC('Sherlock ___ eat sweets. Sweets aren\'t good for dogs. ' + NO, ['can', "can't"], "can't"),
-    MC('You ___ buy pens and rulers in the school shop. ' + OK, ['can', "can't"], 'can'),
-    MC('I ___ pay for my lunch. I haven\'t got money. ' + NO, ['can', "can't"], "can't"),
-    MC('We ___ have lunch in the cafeteria. ' + OK, ['can', "can't"], 'can'),
-    MC('Olivia ___ ride a bike. ' + OK, ['can', "can't"], 'can'),
-    MC('The students ___ use the recording studio for their project. ' + OK, ['can', "can't"], 'can'),
-    MC('Tony is a mouse. He ___ read. ' + NO, ['can', "can't"], "can't"),
-    MC('Dogs ___ come into the cafeteria. ' + NO, ['can', "can't"], "can't")
+  { id: 'can-1', topic: 'can', title: 'can oder can\'t?', intro: 'Lies den ganzen Satz. Was passt: kann oder kann nicht?', keep: true, items: [
+    MC('Look at Holly! She ___ skate fast now. Cool!', ['can', "can't"], 'can'),
+    MC('Luke can play football, but he ___ skate.', ['can', "can't"], "can't", 'but = aber → Gegensatz'),
+    MC('Dave ___ meet Luke now. Sorry, Luke!', ['can', "can't"], "can't"),
+    MC('Jay is great at singing. He ___ sing very well.', ['can', "can't"], 'can'),
+    MC('Sherlock ___ eat sweets. Sweets aren\'t good for dogs.', ['can', "can't"], "can't"),
+    MC('The school shop is great. You ___ buy pens and rulers there.', ['can', "can't"], 'can'),
+    MC('I ___ pay for my lunch. I haven\'t got money.', ['can', "can't"], "can't"),
+    MC('The food is good. We ___ have lunch in the cafeteria.', ['can', "can't"], 'can'),
+    MC('Olivia has got a bike. She ___ ride it to school.', ['can', "can't"], 'can'),
+    MC('The students ___ use the recording studio. It\'s for their project.', ['can', "can't"], 'can'),
+    MC('Tony is a mouse. He ___ read books!', ['can', "can't"], "can't"),
+    MC('No dogs in the cafeteria! Dogs ___ come in.', ['can', "can't"], "can't")
   ] },
-  { id: 'can-2', topic: 'can', title: 'Schulregeln: erlaubt oder verboten?', intro: 'can = darf · can\'t = darf nicht. ' + OK + ' erlaubt, ' + NO + ' verboten.', keep: true, items: [
-    MC('You ___ eat sweets in the classroom. ' + NO, ['can', "can't"], "can't"),
-    MC('Students ___ buy lunch in the cafeteria. ' + OK, ['can', "can't"], 'can'),
-    MC('You ___ text your friends in the lesson. ' + NO, ['can', "can't"], "can't"),
-    MC('You ___ go to the school shop in the lunch break. ' + OK, ['can', "can't"], 'can'),
-    MC('Students ___ sing in the recording studio. ' + OK, ['can', "can't"], 'can'),
-    MC('You ___ play football in the classroom. ' + NO, ['can', "can't"], "can't"),
-    MC('Students ___ look at the pictures in the art room. ' + OK, ['can', "can't"], 'can'),
-    MC('You ___ use your phone in the test. ' + NO, ['can', "can't"], "can't"),
-    MC('You ___ help your classmates with their projects. ' + OK, ['can', "can't"], 'can'),
-    MC('Dogs ___ come into the school. ' + NO, ['can', "can't"], "can't"),
-    MC('You ___ dance in the talent show. ' + OK, ['can', "can't"], 'can')
+  { id: 'can-2', topic: 'can', title: 'Schulregeln: erlaubt oder verboten?', intro: 'Lies die Regel vor dem Pfeil. can = darf · can\'t = darf nicht.', keep: true, items: [
+    MC('NO sweets in the classroom! → You ___ eat sweets in the classroom.', ['can', "can't"], "can't"),
+    MC('Lunch is in the cafeteria. → Students ___ buy lunch there.', ['can', "can't"], 'can'),
+    MC('No phones in lessons! → You ___ text your friends in the lesson.', ['can', "can't"], "can't"),
+    MC('The school shop is open in the lunch break. → You ___ go there in the lunch break.', ['can', "can't"], 'can'),
+    MC('The recording studio is for everyone. → Students ___ sing there.', ['can', "can't"], 'can'),
+    MC('No football in the classroom! → You ___ play football there.', ['can', "can't"], "can't"),
+    MC('The art room is open. → Students ___ look at the pictures.', ['can', "can't"], 'can'),
+    MC('No phones in the test! → You ___ use your phone.', ['can', "can't"], "can't"),
+    MC('Help your classmates! → You ___ help your classmates with their projects.', ['can', "can't"], 'can'),
+    MC('No dogs at school! → Dogs ___ come into the school.', ['can', "can't"], "can't"),
+    MC('Everyone is welcome at the talent show. → You ___ dance in the talent show.', ['can', "can't"], 'can')
   ] },
   { id: 'can-3', topic: 'can', title: 'Kurzantworten mit can', intro: 'Wähle die richtige Kurzantwort. ' + OK + ' = ja, ' + NO + ' = nein.', items: [
-    MC('Can Holly skate? ' + OK, ['Yes, she can.', 'Yes, she can skate can.', 'Yes, she is.', "No, she can't."], 'Yes, she can.'),
-    MC('Can Luke skate? ' + NO, ["No, he can't.", "No, he don't.", "No, she can't.", 'Yes, he can.'], "No, he can't."),
-    MC('Can you sing? ' + OK, ['Yes, I can.', 'Yes, you can.', 'Yes, I sing.', "No, I can't."], 'Yes, I can.'),
-    MC('Can Jay dance? ' + OK, ['Yes, he can.', 'Yes, he cans.', 'Yes, it can.', "No, he can't."], 'Yes, he can.'),
-    MC('Can Sherlock read? ' + NO, ["No, he can't.", "No, he isn't.", 'No, he can.', 'Yes, he can.'], "No, he can't."),
-    MC('Can the students use the computers? ' + OK, ['Yes, they can.', 'Yes, he can.', 'Yes, they are.', "No, they can't."], 'Yes, they can.'),
-    MC('Can Dave meet Luke now? ' + NO, ["No, he can't.", "No, they can't.", "No, he hasn't.", 'Yes, he can.'], "No, he can't."),
-    MC('Can Olivia and Holly skate? ' + OK, ['Yes, they can.', 'Yes, she can.', 'Yes, we can.', "No, they can't."], 'Yes, they can.'),
-    MC('Can Tony pay for his lunch? ' + NO, ["No, he can't.", "No, he not can.", "No, they can't.", 'Yes, he can.'], "No, he can't."),
-    MC('Can Mr Swindon sing? ' + OK, ['Yes, he can.', 'Yes, she can.', 'Yes, he sings can.', "No, he can't."], 'Yes, he can.')
+    MC('Can Holly skate? ' + OK, ['Yes, she can.', 'Yes, she can skate can.', 'Yes, she is.', 'Yes, her can.'], 'Yes, she can.'),
+    MC('Can Luke skate? ' + NO, ["No, he can't.", "No, he don't.", "No, she can't.", "No, he can't skate can."], "No, he can't."),
+    MC('Can you sing? ' + OK, ['Yes, I can.', 'Yes, you can.', 'Yes, I sing.', 'Yes, I cans.'], 'Yes, I can.'),
+    MC('Can Jay dance? ' + OK, ['Yes, he can.', 'Yes, he cans.', 'Yes, it can.', 'Yes, his can.'], 'Yes, he can.'),
+    MC('Can Sherlock read? ' + NO, ["No, he can't.", "No, he isn't.", 'No, he can.', "No, his can't."], "No, he can't."),
+    MC('Can the students use the computers? ' + OK, ['Yes, they can.', 'Yes, he can.', 'Yes, they are.', 'Yes, their can.'], 'Yes, they can.'),
+    MC('Can Dave meet Luke now? ' + NO, ["No, he can't.", "No, they can't.", "No, he hasn't.", "No, he cants."], "No, he can't."),
+    MC('Can Olivia and Holly skate? ' + OK, ['Yes, they can.', 'Yes, she can.', 'Yes, we can.', 'Yes, they cans.'], 'Yes, they can.'),
+    MC('Can Tony pay for his lunch? ' + NO, ["No, he can't.", "No, he not can.", "No, they can't.", "No, he don't."], "No, he can't."),
+    MC('Can Mr Swindon sing? ' + OK, ['Yes, he can.', 'Yes, she can.', 'Yes, he sings can.', 'Yes, he is.'], 'Yes, he can.')
   ] },
   { id: 'can-4', topic: 'can', title: 'Sätze bauen mit can', intro: 'Tippe die Wörter in der richtigen Reihenfolge an.', items: [
     OR('Can Holly skate fast?', 'Frage: Can steht am Anfang.'),
@@ -285,17 +285,17 @@ const EXERCISES = [
     MC('Mr Swindon ___ a uniform.', ["haven't got", "hasn't got"], "hasn't got"),
     MC('Our school ___ a machine for sweets.', ["haven't got", "hasn't got"], "hasn't got")
   ] },
-  { id: 'have-4', topic: 'have', title: 'Positiv oder negativ?', intro: OK + ' = hat · ' + NO + ' = hat nicht. Wähle die richtige Form.', keep: true, items: [
-    MC("Jay's new school ___ a big cafeteria. " + OK, ['has got', 'have got', "hasn't got", "haven't got"], 'has got'),
-    MC('His old school ___ a cafeteria. ' + NO, ['has got', 'have got', "hasn't got", "haven't got"], "hasn't got"),
-    MC('The students at TTS ___ planners. ' + OK, ['has got', 'have got', "hasn't got", "haven't got"], 'have got'),
-    MC('Teachers ___ a uniform. ' + NO, ['has got', 'have got', "hasn't got", "haven't got"], "haven't got"),
-    MC('Olivia ___ a bike. ' + OK, ['has got', 'have got', "hasn't got", "haven't got"], 'has got'),
-    MC('Luke and Dave ___ a test today. ' + NO, ['has got', 'have got', "hasn't got", "haven't got"], "haven't got"),
-    MC('The school shop ___ exercise books. ' + OK, ['has got', 'have got', "hasn't got", "haven't got"], 'has got'),
-    MC('I ___ my rubber! ' + NO, ['has got', 'have got', "hasn't got", "haven't got"], "haven't got"),
-    MC('We ___ a talent show at school. ' + OK, ['has got', 'have got', "hasn't got", "haven't got"], 'have got'),
-    MC('Holly ___ her lucky charm. ' + NO, ['has got', 'have got', "hasn't got", "haven't got"], "hasn't got")
+  { id: 'have-4', topic: 'have', title: 'Positiv oder negativ?', intro: 'Lies den ganzen Satz: hat er es oder hat er es nicht? Dann wähle die richtige Form.', keep: true, items: [
+    MC("Lunch is great! Jay's new school ___ a big cafeteria.", ['has got', 'have got', "hasn't got", "haven't got"], 'has got'),
+    MC('The students eat in the classroom. His old school ___ a cafeteria.', ['has got', 'have got', "hasn't got", "haven't got"], "hasn't got"),
+    MC("Look, here's Holly's planner! The students at TTS ___ planners.", ['has got', 'have got', "hasn't got", "haven't got"], 'have got'),
+    MC('Only the students have got a uniform. Teachers ___ a uniform.', ['has got', 'have got', "hasn't got", "haven't got"], "haven't got"),
+    MC('Olivia loves cycling. She ___ a cool bike.', ['has got', 'have got', "hasn't got", "haven't got"], 'has got'),
+    MC('No English test today! Luke and Dave ___ a test today.', ['has got', 'have got', "hasn't got", "haven't got"], "haven't got"),
+    MC('You can buy exercise books here. The school shop ___ exercise books.', ['has got', 'have got', "hasn't got", "haven't got"], 'has got'),
+    MC("Oh no! Where's my rubber? I ___ my rubber!", ['has got', 'have got', "hasn't got", "haven't got"], "haven't got"),
+    MC('Jay can sing in the show. We ___ a talent show at school.', ['has got', 'have got', "hasn't got", "haven't got"], 'have got'),
+    MC('Holly is sad. She ___ her lucky charm.', ['has got', 'have got', "hasn't got", "haven't got"], "hasn't got")
   ] },
   { id: 'have-5', topic: 'have', title: 'Fragen: Have oder Has?', intro: 'Has für he, she, it und Nomen in der Einzahl. Sonst Have.', keep: true, items: [
     MC('___ Dave got a computer?', ['Have', 'Has'], 'Has'),
@@ -320,18 +320,18 @@ const EXERCISES = [
     OR("We haven't got a pet.", "Person + haven't got + …")
   ] },
   { id: 'have-7', topic: 'have', title: 'Kurzantworten', intro: 'Wähle die passende Kurzantwort. ' + OK + ' = ja, ' + NO + ' = nein.', items: [
-    MC('Have you got a question, Luke? ' + OK, ['Yes, I have.', "Yes, I've.", 'Yes, I has.', "No, I haven't."], 'Yes, I have.', "In Kurzantworten nie die Kurzform: Yes, I have. (nicht: Yes, I've.)"),
-    MC('Has Holly got a pink pencil case? ' + OK, ['Yes, she has.', "Yes, she's.", 'Yes, she have.', "No, she hasn't."], 'Yes, she has.'),
-    MC('Has Jay got a favourite colour? ' + NO, ["No, he hasn't.", "No, he haven't.", "No, she hasn't.", 'Yes, he has.'], "No, he hasn't."),
-    MC('Have the students got an English test today? ' + OK, ['Yes, they have.', 'Yes, they has.', 'Yes, he has.', "No, they haven't."], 'Yes, they have.'),
-    MC('Has your school got a recording studio? ' + NO, ["No, it hasn't.", "No, it haven't.", "No, she hasn't.", 'Yes, it has.'], "No, it hasn't."),
-    MC('Have Luke and Dave got a new tutor? ' + NO, ["No, they haven't.", "No, they hasn't.", "No, he hasn't.", 'Yes, they have.'], "No, they haven't."),
-    MC('Has Mr Swindon got a planner? ' + OK, ['Yes, he has.', 'Yes, he have.', "Yes, he's.", "No, he hasn't."], 'Yes, he has.'),
-    MC('Have you got a computer, Dave? ' + OK, ['Yes, I have.', 'Yes, you have.', 'Yes, I has.', "No, I haven't."], 'Yes, I have.'),
-    MC('Has Olivia got a problem? ' + NO, ["No, she hasn't.", "No, she haven't.", "No, he hasn't.", 'Yes, she has.'], "No, she hasn't."),
-    MC('Has the classroom got new chairs? ' + OK, ['Yes, it has.', 'Yes, it have.', 'Yes, they has.', "No, it hasn't."], 'Yes, it has.'),
-    MC('Have you and Holly got sweets? ' + NO, ["No, we haven't.", "No, we hasn't.", "No, I haven't.", 'Yes, we have.'], "No, we haven't.", 'you and Holly = ihr → Antwort mit we'),
-    MC('Has Sherlock got a ball? ' + OK, ['Yes, he has.', 'Yes, he have.', "Yes, he's got.", "No, he hasn't."], 'Yes, he has.')
+    MC('Have you got a question, Luke? ' + OK, ['Yes, I have.', "Yes, I've.", 'Yes, I has.', 'Yes, I got.'], 'Yes, I have.', "In Kurzantworten nie die Kurzform: Yes, I have. (nicht: Yes, I've.)"),
+    MC('Has Holly got a pink pencil case? ' + OK, ['Yes, she has.', "Yes, she's.", 'Yes, she have.', 'Yes, she got.'], 'Yes, she has.'),
+    MC('Has Jay got a favourite colour? ' + NO, ["No, he hasn't.", "No, he haven't.", "No, she hasn't.", "No, he hasn't got."], "No, he hasn't."),
+    MC('Have the students got an English test today? ' + OK, ['Yes, they have.', 'Yes, they has.', 'Yes, he has.', "Yes, they've."], 'Yes, they have.'),
+    MC('Has your school got a recording studio? ' + NO, ["No, it hasn't.", "No, it haven't.", "No, she hasn't.", "No, it isn't got."], "No, it hasn't."),
+    MC('Have Luke and Dave got a new tutor? ' + NO, ["No, they haven't.", "No, they hasn't.", "No, he hasn't.", "No, their haven't."], "No, they haven't."),
+    MC('Has Mr Swindon got a planner? ' + OK, ['Yes, he has.', 'Yes, he have.', "Yes, he's.", 'Yes, his has.'], 'Yes, he has.'),
+    MC('Have you got a computer, Dave? ' + OK, ['Yes, I have.', 'Yes, you have.', 'Yes, I has.', "Yes, I've."], 'Yes, I have.'),
+    MC('Has Olivia got a problem? ' + NO, ["No, she hasn't.", "No, she haven't.", "No, he hasn't.", "No, she isn't."], "No, she hasn't."),
+    MC('Has the classroom got new chairs? ' + OK, ['Yes, it has.', 'Yes, it have.', 'Yes, they has.', "Yes, it's."], 'Yes, it has.'),
+    MC('Have you and Holly got sweets? ' + NO, ["No, we haven't.", "No, we hasn't.", "No, I haven't.", "No, us haven't."], "No, we haven't.", 'you and Holly = ihr → Antwort mit we'),
+    MC('Has Sherlock got a ball? ' + OK, ['Yes, he has.', 'Yes, he have.', "Yes, he's got.", "Yes, he's."], 'Yes, he has.')
   ] },
   { id: 'have-8', topic: 'have', title: 'Finde den Fehler', intro: 'Jeder Satz hat einen Fehler. Wähle den richtigen Satz.', items: [
     MC("We've't got a pet.", ["We haven't got a pet.", "We'ven't got a pet.", "We hasn't got a pet."], "We haven't got a pet."),
@@ -627,12 +627,20 @@ function genItems(ex) {
   }
   return [];
 }
+const NAMES = ['I', 'Holly', 'Luke', 'Jay', 'Dave', 'Olivia', 'Mr', 'TTS', 'Tony', 'Sherlock', 'Jamie', 'Thomas', 'English'];
+// Satzzeichen als eigene Kärtchen, erstes Wort klein – so verrät nichts den Anfang oder das Ende
+function orderWords(s) {
+  const w = s.replace(/([?.!,])/g, ' $1').split(/\s+/).filter(Boolean);
+  if (!NAMES.includes(w[0])) w[0] = w[0].charAt(0).toLowerCase() + w[0].slice(1);
+  return w;
+}
+function sameSentence(a, b) { const n = x => x.toLowerCase().replace(/\s+([?.!,])/g, '$1').replace(/\s+/g, ' ').trim(); return n(a) === n(b); }
 function prepItems(ex) {
   const src = ex.items ? ex.items.map(it => Object.assign({}, it, { keep: ex.keep })) : genItems(ex);
   return shuffle(src).map(it => {
     if (it.t === 'mc' && !it.keep) it.o = shuffle(it.o);
     if (it.t === 'order') {
-      const w = it.s.split(' ');
+      const w = orderWords(it.s);
       let s = shuffle(w);
       for (let i = 0; i < 5 && s.join(' ') === it.s && w.length > 2; i++) s = shuffle(w);
       it.words = s;
@@ -733,10 +741,10 @@ function setupOrder(it) {
   draw();
   chk.onclick = () => {
     const built = chosen.map(i => it.words[i]).join(' ');
-    const ok = [it.s].concat(it.alts).some(s => s.toLowerCase() === built.toLowerCase());
+    const ok = [it.s].concat(it.alts).some(s => sameSentence(s, built));
     pool.innerHTML = ''; ans.querySelectorAll('.chip').forEach(b => b.disabled = true);
     chk.style.display = 'none';
-    feedback(ok, built, it.s);
+    feedback(ok, built.replace(/\s+([?.!,])/g, '$1'), it.s);
   };
 }
 function nextItem() {
