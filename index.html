@@ -1,0 +1,896 @@
+<!DOCTYPE html>
+<html lang="de">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1, viewport-fit=cover">
+<meta name="robots" content="noindex">
+<meta name="theme-color" content="#5a9e1e">
+<title>Englisch üben – Green Line 1</title>
+<style>
+:root{--g:#5a9e1e;--g2:#e9f5dc;--d:#1f2a1a;--r:#d23b3b;--r2:#fde8e8;--b:#2f6fb5;--bg:#f6f8f3;--card:#fff;--mut:#6b7466}
+*{box-sizing:border-box;-webkit-tap-highlight-color:transparent}
+html,body{margin:0;background:var(--bg);color:var(--d);font:17px/1.45 system-ui,-apple-system,"Segoe UI",Roboto,sans-serif}
+header{position:sticky;top:0;z-index:5;background:var(--g);color:#fff;display:flex;align-items:center;gap:10px;padding:10px 14px;min-height:54px}
+header h1{font-size:18px;margin:0;flex:1;white-space:nowrap;overflow:hidden;text-overflow:ellipsis}
+header button{background:rgba(255,255,255,.2);color:#fff;border:0;border-radius:10px;padding:8px 12px;font-size:16px}
+main{max-width:640px;margin:0 auto;padding:14px 14px 80px}
+.card{background:var(--card);border-radius:16px;padding:16px;margin:0 0 12px;box-shadow:0 1px 3px rgba(0,0,0,.08)}
+.grid{display:grid;grid-template-columns:1fr 1fr;gap:12px}
+.tile{background:var(--card);border:0;border-radius:16px;padding:16px 12px;text-align:center;box-shadow:0 1px 3px rgba(0,0,0,.08);font-size:16px;color:var(--d);cursor:pointer;width:100%}
+.tile .ic{font-size:38px;display:block;margin-bottom:6px}
+.tile b{display:block;font-size:17px}
+.tile small{color:var(--mut)}
+.row{display:flex;align-items:center;gap:12px;width:100%;background:var(--card);border:0;border-radius:14px;padding:14px;margin:0 0 10px;box-shadow:0 1px 3px rgba(0,0,0,.08);text-align:left;font-size:16px;color:var(--d);cursor:pointer}
+.row .ic{font-size:28px}
+.row .tx{flex:1}
+.row small{display:block;color:var(--mut)}
+.badge{min-width:54px;text-align:center;border-radius:20px;padding:4px 8px;font-weight:700;font-size:14px;background:#eee;color:var(--mut)}
+.badge.good{background:var(--g2);color:var(--g)}
+.badge.mid{background:#fff4d6;color:#a06a00}
+.badge.bad{background:var(--r2);color:var(--r)}
+.bar{height:10px;background:#e4e8df;border-radius:6px;overflow:hidden;margin-top:6px}
+.bar i{display:block;height:100%;background:var(--g)}
+.rule{background:#eef5fb;border-left:4px solid var(--b);padding:10px 12px;border-radius:8px;font-size:15px;margin-bottom:12px}
+.q{font-size:21px;margin:6px 0 16px}
+.q .gap{display:inline-block;min-width:70px;border-bottom:3px solid var(--g);text-align:center;color:var(--g);font-weight:700}
+.opts{display:grid;gap:10px}
+.opt{width:100%;padding:14px;border-radius:12px;border:2px solid #dfe5d8;background:#fff;font-size:18px;text-align:left;cursor:pointer;color:var(--d)}
+.opt.right{border-color:var(--g);background:var(--g2)}
+.opt.wrong{border-color:var(--r);background:var(--r2)}
+.opt:disabled{cursor:default}
+.ok{color:var(--g);font-weight:700}.no{color:var(--r);font-weight:700}
+.btn{display:block;width:100%;padding:15px;border:0;border-radius:12px;background:var(--g);color:#fff;font-size:18px;font-weight:600;margin-top:12px;cursor:pointer}
+.btn.sec{background:#e4e8df;color:var(--d)}
+.btn.blue{background:var(--b)}
+.btn:disabled{opacity:.5}
+input[type=text],input[type=password],textarea,select{width:100%;font-size:18px;padding:12px;border:2px solid #dfe5d8;border-radius:12px;font-family:inherit;background:#fff}
+textarea{min-height:220px}
+.fb{margin-top:12px;padding:12px;border-radius:12px;font-size:16px}
+.fb.right{background:var(--g2)}.fb.wrong{background:var(--r2)}
+.prog{display:flex;justify-content:space-between;color:var(--mut);font-size:14px;margin-bottom:6px}
+.chips{display:flex;flex-wrap:wrap;gap:8px;min-height:52px}
+.chip{padding:10px 14px;border-radius:10px;border:2px solid #cfd8c5;background:#fff;font-size:18px;cursor:pointer;color:var(--d)}
+.answer{border:2px dashed #cfd8c5;border-radius:12px;padding:8px;margin-bottom:12px;min-height:60px}
+.flash{min-height:190px;display:flex;flex-direction:column;align-items:center;justify-content:center;font-size:28px;text-align:center;cursor:pointer;user-select:none}
+.flash small{font-size:14px;color:var(--mut);margin-top:10px}
+.two{display:grid;grid-template-columns:1fr 1fr;gap:10px}
+.big{font-size:54px;text-align:center;margin:6px 0}
+.center{text-align:center}
+.mut{color:var(--mut)}
+table{width:100%;border-collapse:collapse;font-size:14px}
+th,td{padding:6px 4px;border-bottom:1px solid #eee;text-align:left;vertical-align:top}
+th{color:var(--mut);font-weight:600}
+details{margin:6px 0}
+summary{cursor:pointer}
+.mist{font-size:13px;white-space:pre-wrap;background:#fafafa;border-radius:8px;padding:8px;margin-top:4px}
+.checks li{list-style:none;margin:4px 0}
+.checks{padding:0;margin:8px 0}
+.tag{display:inline-block;background:#eef2e8;border-radius:8px;padding:3px 8px;margin:3px;font-size:14px}
+.status{font-size:13px;color:var(--mut);text-align:center;margin-top:10px}
+
+</style>
+</head>
+<body>
+<header><button id="back" aria-label="Zurück">←</button><h1 id="title">Englisch üben</h1></header>
+<main id="main"></main>
+<script>
+// ================= EINSTELLUNGEN (hier anpassen) =================
+const CONFIG = {
+  // Web-App-URL aus Google Apps Script (Ergebnisse landen im Sheet "Englisch Lernfortschritt")
+  SHEET_URL: 'https://script.google.com/macros/s/AKfycbwvm_lrSBGi628c0HLVRNtBgLtgB79ZKDEY_IkOsGMcg_bx_oEuMCaVmgMoRiqVFX9PNA/exec',
+  // Namen der Kinder – bitte nur Spitznamen, die Seite ist öffentlich
+  KIDS: [
+    { name: 'Kind 1', emoji: '🦊' },
+    { name: 'Kind 2', emoji: '🐼' },
+    { name: 'Kind 3', emoji: '🐯' }
+  ],
+  // PIN für den Eltern-Bereich (bitte ändern)
+  PARENT_PIN: '1234'
+};
+// ================================================================
+</script>
+<script>
+// ===== Inhalte: Green Line 1 G9 – Classtest No. 2 =====
+// Eigene Übungen zu den Themen der Checkliste. Keine Buchaufgaben kopiert.
+function MC(q, o, a, h) { return { t: 'mc', q: q, o: o, a: a, h: h || '' }; }
+function TY(q, a, h) { return { t: 'type', q: q, a: Array.isArray(a) ? a : [a], h: h || '' }; }
+function OR(s, h, alts) { return { t: 'order', s: s, alts: alts || [], h: h || '' }; }
+
+const OK = '<span class="ok">✓</span>';
+const NO = '<span class="no">✗</span>';
+
+const RULES = {
+  can: '<b>can</b> = kann / darf &nbsp;·&nbsp; <b>can\'t</b> = kann nicht / darf nicht.<br>can ist für alle Personen gleich: I can, he can, they can (kein -s!).<br>Frage: <b>Can</b> you sing? – Yes, I <b>can</b>. / No, I <b>can\'t</b>.',
+  poss: 'I → <b>my</b> · you → <b>your</b> · he → <b>his</b> · she → <b>her</b> · it → <b>its</b> · we → <b>our</b> · you → <b>your</b> · they → <b>their</b><br>Der Begleiter steht direkt vor dem Nomen: <b>my</b> sister, <b>my</b> little brother.<br><b>your</b> = dein, euer oder Ihr – auf den Zusammenhang achten!',
+  have: '<b>have got</b>: I, you, we, they &nbsp;·&nbsp; <b>has got</b>: he, she, it (und ein Nomen in der Einzahl)<br>Kurzform nach Pronomen: I\'ve got, she\'s got, they\'ve got. Nach Nomen Langform: The school <b>has got</b> …<br>Verneinung: <b>haven\'t got / hasn\'t got</b> (nicht: we\'ven\'t!)<br>Frage: <b>Have</b> you got …? <b>Has</b> he got …? – Yes, I <b>have</b>. / No, he <b>hasn\'t</b>.',
+  write: 'Nützliche Sätze: Our school has got / hasn\'t got … · We\'ve got … too, but we haven\'t got … · There is / There are … · The students can … · But we can\'t …',
+  vocab: 'Unit 2 – Check-in und Station 1 (Buch S. 199–200).<br><b>a</b> vor Konsonant-Laut, <b>an</b> vor Vokal-Laut: a ruler, <b>an</b> idea, <b>an</b> English test.'
+};
+
+const TOPICS = [
+  { id: 'can', title: "can / can't", icon: '💪', sub: 'Können und Dürfen' },
+  { id: 'poss', title: 'Possessive determiners', icon: '👜', sub: 'my, your, his, her …' },
+  { id: 'have', title: 'have got / has got', icon: '🎒', sub: 'Lang-, Kurzform, Fragen' },
+  { id: 'write', title: 'Writing: my school', icon: '✏️', sub: 'Über die Schule schreiben' },
+  { id: 'vocab', title: 'Vocabulary Unit 2', icon: '📚', sub: 'Check-in + Station 1' },
+  { id: 'test', title: 'Probe-Test', icon: '🏆', sub: 'Alles gemischt' }
+];
+
+const EXERCISES = [
+  // ---------- can / can't ----------
+  { id: 'can-1', topic: 'can', title: 'can oder can\'t?', intro: OK + ' = kann &nbsp; ' + NO + ' = kann nicht', keep: true, items: [
+    MC('Holly ___ skate fast now. ' + OK, ['can', "can't"], 'can'),
+    MC('Luke ___ skate. He\'s into football. ' + NO, ['can', "can't"], "can't"),
+    MC('Dave ___ meet Luke now. Aunt Frances is there. ' + NO, ['can', "can't"], "can't"),
+    MC('Jay ___ sing and dance. ' + OK, ['can', "can't"], 'can'),
+    MC('Sherlock ___ eat sweets. Sweets aren\'t good for dogs. ' + NO, ['can', "can't"], "can't"),
+    MC('You ___ buy pens and rulers in the school shop. ' + OK, ['can', "can't"], 'can'),
+    MC('I ___ pay for my lunch. I haven\'t got money. ' + NO, ['can', "can't"], "can't"),
+    MC('We ___ have lunch in the cafeteria. ' + OK, ['can', "can't"], 'can'),
+    MC('Olivia ___ ride a bike. ' + OK, ['can', "can't"], 'can'),
+    MC('The students ___ use the recording studio for their project. ' + OK, ['can', "can't"], 'can'),
+    MC('Tony is a mouse. He ___ read. ' + NO, ['can', "can't"], "can't"),
+    MC('Dogs ___ come into the cafeteria. ' + NO, ['can', "can't"], "can't")
+  ] },
+  { id: 'can-2', topic: 'can', title: 'Schulregeln: erlaubt oder verboten?', intro: 'can = darf · can\'t = darf nicht. ' + OK + ' erlaubt, ' + NO + ' verboten.', keep: true, items: [
+    MC('You ___ eat sweets in the classroom. ' + NO, ['can', "can't"], "can't"),
+    MC('Students ___ buy lunch in the cafeteria. ' + OK, ['can', "can't"], 'can'),
+    MC('You ___ text your friends in the lesson. ' + NO, ['can', "can't"], "can't"),
+    MC('You ___ go to the school shop in the lunch break. ' + OK, ['can', "can't"], 'can'),
+    MC('Students ___ sing in the recording studio. ' + OK, ['can', "can't"], 'can'),
+    MC('You ___ play football in the classroom. ' + NO, ['can', "can't"], "can't"),
+    MC('Students ___ look at the pictures in the art room. ' + OK, ['can', "can't"], 'can'),
+    MC('You ___ use your phone in the test. ' + NO, ['can', "can't"], "can't"),
+    MC('You ___ help your classmates with their projects. ' + OK, ['can', "can't"], 'can'),
+    MC('Dogs ___ come into the school. ' + NO, ['can', "can't"], "can't"),
+    MC('You ___ dance in the talent show. ' + OK, ['can', "can't"], 'can')
+  ] },
+  { id: 'can-3', topic: 'can', title: 'Kurzantworten mit can', intro: 'Wähle die richtige Kurzantwort. ' + OK + ' = ja, ' + NO + ' = nein.', items: [
+    MC('Can Holly skate? ' + OK, ['Yes, she can.', 'Yes, she can skate can.', 'Yes, she is.', "No, she can't."], 'Yes, she can.'),
+    MC('Can Luke skate? ' + NO, ["No, he can't.", "No, he don't.", "No, she can't.", 'Yes, he can.'], "No, he can't."),
+    MC('Can you sing? ' + OK, ['Yes, I can.', 'Yes, you can.', 'Yes, I sing.', "No, I can't."], 'Yes, I can.'),
+    MC('Can Jay dance? ' + OK, ['Yes, he can.', 'Yes, he cans.', 'Yes, it can.', "No, he can't."], 'Yes, he can.'),
+    MC('Can Sherlock read? ' + NO, ["No, he can't.", "No, he isn't.", 'No, he can.', 'Yes, he can.'], "No, he can't."),
+    MC('Can the students use the computers? ' + OK, ['Yes, they can.', 'Yes, he can.', 'Yes, they are.', "No, they can't."], 'Yes, they can.'),
+    MC('Can Dave meet Luke now? ' + NO, ["No, he can't.", "No, they can't.", "No, he hasn't.", 'Yes, he can.'], "No, he can't."),
+    MC('Can Olivia and Holly skate? ' + OK, ['Yes, they can.', 'Yes, she can.', 'Yes, we can.', "No, they can't."], 'Yes, they can.'),
+    MC('Can Tony pay for his lunch? ' + NO, ["No, he can't.", "No, he not can.", "No, they can't.", 'Yes, he can.'], "No, he can't."),
+    MC('Can Mr Swindon sing? ' + OK, ['Yes, he can.', 'Yes, she can.', 'Yes, he sings can.', "No, he can't."], 'Yes, he can.')
+  ] },
+  { id: 'can-4', topic: 'can', title: 'Sätze bauen mit can', intro: 'Tippe die Wörter in der richtigen Reihenfolge an.', items: [
+    OR('Can Holly skate fast?', 'Frage: Can steht am Anfang.'),
+    OR('Can I buy sweets in the shop?', 'Frage: Can + Person + Verb …'),
+    OR("Luke can't skate.", "Person + can't + Verb."),
+    OR('We can have lunch in the cafeteria.', 'Person + can + Verb + Rest.'),
+    OR('Can you help me, please?', 'Frage: Can + you + Verb …'),
+    OR('Jay can sing and dance.', 'Person + can + Verb.', ['Jay can dance and sing.']),
+    OR("You can't eat sweets in the classroom.", "Person + can't + Verb + Rest."),
+    OR('Can the students use the recording studio?', 'Frage: Can + the students + Verb …')
+  ] },
+  { id: 'can-5', topic: 'can', title: 'Übersetzen: can / can\'t', intro: 'Schreibe den Satz auf Englisch.', items: [
+    TY('Ich kann singen.', 'I can sing.'),
+    TY('Er kann nicht tanzen.', ["He can't dance.", 'He cannot dance.']),
+    TY('Kannst du skaten?', 'Can you skate?', 'Frage: Can steht vorne.'),
+    TY('Du kannst im Schulladen Füller kaufen.', ['You can buy pens in the school shop.', 'You can buy pens at the school shop.', 'In the school shop you can buy pens.'], 'Füller = pen'),
+    TY('Holly kann jetzt schnell skaten.', ['Holly can skate fast now.', 'Now Holly can skate fast.']),
+    TY('Sie können nicht bezahlen. (sie = Mehrzahl)', ["They can't pay.", 'They cannot pay.']),
+    TY('Kann ich dir helfen?', 'Can I help you?'),
+    TY('Luke kann Fußball spielen.', 'Luke can play football.')
+  ] },
+
+  // ---------- Possessive determiners ----------
+  { id: 'poss-1', topic: 'poss', title: 'Welcher Begleiter passt?', intro: 'Wem gehört es? Wähle my, your, his, her, its, our oder their.', items: [
+    MC("I'm Jay. ___ old school is in Enfield.", ['My', 'His', 'Your', 'Our'], 'My'),
+    MC('This is Holly. ___ pencil case is pink.', ['Her', 'His', 'Its', 'Their'], 'Her', 'Holly = she → her'),
+    MC("That's Luke. ___ dog is Sherlock.", ['His', 'Her', 'Its', 'Our'], 'His', 'Luke = he → his'),
+    MC("We're in a tutor group. ___ tutor is Mr Swindon.", ['Our', 'Their', 'We', 'Your'], 'Our'),
+    MC('Olivia and Holly are friends. ___ skates are cool.', ['Their', 'Her', 'They', 'Our'], 'Their', 'Olivia and Holly = they → their'),
+    MC('Look at the school. ___ uniform is blue.', ['Its', 'His', 'Her', "It's"], 'Its', "the school = it → its (ohne Apostroph! it's = it is)"),
+    MC("You're new, Jay. What's ___ favourite colour?", ['your', 'his', 'my', 'their'], 'your'),
+    MC('Mr Swindon is a teacher. ___ office is next to the classroom.', ['His', 'Her', 'Its', 'Their'], 'His'),
+    MC('Amber and I are sisters. ___ grandparents are in Greenwich.', ['Our', 'Their', 'My', 'Your'], 'Our', 'Amber and I = we → our'),
+    MC('Luke and Jamie, is this ___ dog?', ['your', 'their', 'our', 'his'], 'your', 'Luke und Jamie werden angesprochen → euer = your'),
+    MC('The students have got a project. ___ project is in the recording studio.', ['Their', 'Its', 'His', 'They'], 'Their'),
+    MC("I've got a new schoolbag. ___ schoolbag is blue.", ['My', 'Your', 'I', 'His'], 'My'),
+    MC('Olivia is from Greenwich. ___ favourite sport is cycling.', ['Her', 'His', 'She', 'Their'], 'Her'),
+    MC('The cafeteria is big. ___ tables are new.', ['Its', 'Their', 'His', "It's"], 'Its', 'the cafeteria = it → its')
+  ] },
+  { id: 'poss-2', topic: 'poss', title: 'Pronomen oder Begleiter?', intro: 'Steht danach ein Nomen? Dann brauchst du den Begleiter (my, his …).', keep: true, items: [
+    MC('___ is Holly.', ['She', 'Her'], 'She'),
+    MC('___ name is Holly.', ['She', 'Her'], 'Her'),
+    MC('___ are in the classroom.', ['We', 'Our'], 'We'),
+    MC('___ classroom is big.', ['We', 'Our'], 'Our'),
+    MC("___'s new at TTS.", ['He', 'His'], 'He'),
+    MC('Jay: ___ hobbies are singing and dancing.', ['I', 'My'], 'My'),
+    MC("___'re cool parents.", ['They', 'Their'], 'They'),
+    MC('___ house is in Brook Lane.', ['They', 'Their'], 'Their'),
+    MC("TTS is great. ___'s a cool school.", ['It', 'Its'], 'It'),
+    MC('TTS is great. ___ uniform is blue.', ['It', 'Its'], 'Its'),
+    MC("Hi, ___'m Jay.", ['I', 'My'], 'I'),
+    MC('___ favourite colour is pink.', ['I', 'My'], 'My')
+  ] },
+  { id: 'poss-3', topic: 'poss', title: 'your = dein, euer oder Ihr?', intro: 'Wer wird angesprochen? Ein Kind → dein. Mehrere → euer. Ein Erwachsener höflich → Ihr.', keep: true, items: [
+    MC('Holly, is this <b>your</b> pencil case?', ['dein', 'euer', 'Ihr'], 'dein'),
+    MC('Luke and Dave, is this <b>your</b> classroom?', ['dein', 'euer', 'Ihr'], 'euer'),
+    MC('Mr Swindon, is this <b>your</b> planner?', ['dein', 'euer', 'Ihr'], 'Ihr'),
+    MC("Jay, what's <b>your</b> favourite colour?", ['dein', 'euer', 'Ihr'], 'dein'),
+    MC('Olivia and Holly, are these <b>your</b> skates?', ['dein', 'euer', 'Ihr'], 'euer'),
+    MC('Mrs Elliot, is Sherlock <b>your</b> dog?', ['dein', 'euer', 'Ihr'], 'Ihr'),
+    MC('Good morning, everyone! Open <b>your</b> exercise books, please.', ['dein', 'euer', 'Ihr'], 'euer'),
+    MC("Dave, where's <b>your</b> schoolbag?", ['dein', 'euer', 'Ihr'], 'dein')
+  ] },
+  { id: 'poss-4', topic: 'poss', title: 'Dialog: Wo ist Lukes Lineal?', intro: 'Wähle den richtigen Begleiter im Dialog.', keep: true, items: [
+    MC("Luke: Oh no! Where's ___ ruler?", ['my', 'his'], 'my'),
+    MC('Dave: Is it in ___ pencil case, Luke?', ['your', 'their'], 'your'),
+    MC("Luke: No. Maybe Jamie has got it. It's in ___ room.", ['his', 'her'], 'his', 'Jamie = he → his'),
+    MC('Dave: Look! Holly and Olivia have got rulers on ___ tables.', ['their', 'our'], 'their'),
+    MC('Luke: Holly, is that ___ ruler?', ['your', 'her'], 'your', 'Luke spricht mit Holly → dein = your'),
+    MC("Holly: Yes, it's ___ ruler. But you can have it.", ['my', 'your'], 'my'),
+    MC("Holly: And this is Olivia's rubber. ___ rubber is pink.", ['Her', 'His'], 'Her'),
+    MC('Mr Swindon: Good morning, everyone! Open ___ exercise books, please.', ['your', 'their'], 'your'),
+    MC('Dave: Oh no! ___ exercise books are in the cafeteria!', ['Our', 'Their'], 'Our', 'Dave meint sich und Luke → we → our'),
+    MC("Luke: Sorry, Mr Swindon. It's ___ problem, not Dave's.", ['my', 'his'], 'my')
+  ] },
+  { id: 'poss-5', topic: 'poss', title: 'Übersetzen: my, his, her …', intro: 'Schreibe den Satz auf Englisch.', items: [
+    TY('Mein Name ist Holly.', 'My name is Holly.'),
+    TY('Sein Hund ist klein. (Luke)', 'His dog is small.'),
+    TY('Ihr Federmäppchen ist pink. (Holly)', 'Her pencil case is pink.', 'Holly = she → her'),
+    TY('Unser Klassenzimmer ist groß.', 'Our classroom is big.'),
+    TY('Ihre Eltern sind cool. (die Kinder)', 'Their parents are cool.', 'die Kinder = they → their'),
+    TY('Ist das deine Schultasche?', ['Is this your schoolbag?', 'Is that your schoolbag?']),
+    TY('Euer Lehrer ist nett.', ['Your teacher is nice.', 'Your tutor is nice.']),
+    TY('Die Schule ist neu. Ihre Uniform ist blau.', 'The school is new. Its uniform is blue.', 'die Schule = it → its (nicht her!)')
+  ] },
+
+  // ---------- have got / has got ----------
+  { id: 'have-1', topic: 'have', title: 'have got oder has got?', intro: 'he, she, it und ein Nomen in der Einzahl → has got. Sonst → have got.', keep: true, items: [
+    MC('Jay ___ a new school.', ['have got', 'has got'], 'has got'),
+    MC('The students at TTS ___ a blue uniform.', ['have got', 'has got'], 'have got'),
+    MC('Mr Swindon ___ a planner.', ['have got', 'has got'], 'has got'),
+    MC('Holly and Olivia ___ skates.', ['have got', 'has got'], 'have got'),
+    MC('The school shop ___ pens and rulers.', ['have got', 'has got'], 'has got'),
+    MC('I ___ a question.', ['have got', 'has got'], 'have got'),
+    MC('Our tutor group ___ a new student.', ['have got', 'has got'], 'has got', 'tutor group = eine Gruppe = it → has got'),
+    MC('You ___ a cool phone, Jay.', ['have got', 'has got'], 'have got'),
+    MC('Dave ___ a computer at home.', ['have got', 'has got'], 'has got'),
+    MC('My grandparents ___ a restaurant.', ['have got', 'has got'], 'have got'),
+    MC('The classroom ___ new tables.', ['have got', 'has got'], 'has got'),
+    MC('Everyone ___ a schoolbag.', ['have got', 'has got'], 'has got', 'everyone = jeder → Einzahl → has got'),
+    MC('We ___ an English test today.', ['have got', 'has got'], 'have got'),
+    MC('Sherlock ___ a ball.', ['have got', 'has got'], 'has got')
+  ] },
+  { id: 'have-2', topic: 'have', title: 'Kurzformen', intro: 'Wie lautet die Kurzform? (Nach Pronomen benutzt man die Kurzform.)', items: [
+    MC('I have got a new planner. → ___ a new planner.', ["I've got", "I'v got", "Iv'e got", "I's got"], "I've got"),
+    MC('She has got a pink pencil case. → ___ a pink pencil case.', ["She's got", "She've got", "Shes got", "She'z got"], "She's got"),
+    MC('We have got a cool tutor. → ___ a cool tutor.', ["We've got", "We's got", "Weve got", "We'v got"], "We've got"),
+    MC('He has got a red pen. → ___ a red pen.', ["He's got", "He've got", "His got", "Hes got"], "He's got"),
+    MC('They have got a recording studio. → ___ a recording studio.', ["They've got", "They's got", "Theyve got", "There got"], "They've got"),
+    MC('It has got big tables. → ___ big tables.', ["It's got", "Its got", "It've got", "It got"], "It's got"),
+    MC('You have got a question. → ___ a question.', ["You've got", "You's got", "Your got", "Youve got"], "You've got"),
+    MC('They have got pocket money. → ___ pocket money.', ["They've got", "Their got", "They's got", "Theyv got"], "They've got"),
+    MC('He has not got a ruler. → ___ a ruler.', ["He hasn't got", "He's not got", "He hasnt got", "He haven't got"], "He hasn't got"),
+    MC('We have not got a pet. → ___ a pet.', ["We haven't got", "We'ven't got", "We hasn't got", "We havent got"], "We haven't got", "Achtung: nicht we'ven't!")
+  ] },
+  { id: 'have-3', topic: 'have', title: 'Verneinung: haven\'t / hasn\'t got', intro: 'he, she, it, Nomen in der Einzahl → hasn\'t got. Sonst → haven\'t got.', keep: true, items: [
+    MC('Holly ___ her lucky charm.', ["haven't got", "hasn't got"], "hasn't got"),
+    MC('I ___ a pencil.', ["haven't got", "hasn't got"], "haven't got"),
+    MC('My old school ___ a recording studio.', ["haven't got", "hasn't got"], "hasn't got"),
+    MC('We ___ sweets in our schoolbags.', ["haven't got", "hasn't got"], "haven't got"),
+    MC('Luke ___ a favourite colour.', ["haven't got", "hasn't got"], "hasn't got"),
+    MC('The students ___ an art test today.', ["haven't got", "hasn't got"], "haven't got"),
+    MC('Dave ___ a pet.', ["haven't got", "hasn't got"], "hasn't got"),
+    MC('They ___ pocket money.', ["haven't got", "hasn't got"], "haven't got"),
+    MC('The cafeteria ___ pudding today.', ["haven't got", "hasn't got"], "hasn't got"),
+    MC('You ___ your planner, Jay!', ["haven't got", "hasn't got"], "haven't got"),
+    MC('Mr Swindon ___ a uniform.', ["haven't got", "hasn't got"], "hasn't got"),
+    MC('Our school ___ a machine for sweets.', ["haven't got", "hasn't got"], "hasn't got")
+  ] },
+  { id: 'have-4', topic: 'have', title: 'Positiv oder negativ?', intro: OK + ' = hat · ' + NO + ' = hat nicht. Wähle die richtige Form.', keep: true, items: [
+    MC("Jay's new school ___ a big cafeteria. " + OK, ['has got', 'have got', "hasn't got", "haven't got"], 'has got'),
+    MC('His old school ___ a cafeteria. ' + NO, ['has got', 'have got', "hasn't got", "haven't got"], "hasn't got"),
+    MC('The students at TTS ___ planners. ' + OK, ['has got', 'have got', "hasn't got", "haven't got"], 'have got'),
+    MC('Teachers ___ a uniform. ' + NO, ['has got', 'have got', "hasn't got", "haven't got"], "haven't got"),
+    MC('Olivia ___ a bike. ' + OK, ['has got', 'have got', "hasn't got", "haven't got"], 'has got'),
+    MC('Luke and Dave ___ a test today. ' + NO, ['has got', 'have got', "hasn't got", "haven't got"], "haven't got"),
+    MC('The school shop ___ exercise books. ' + OK, ['has got', 'have got', "hasn't got", "haven't got"], 'has got'),
+    MC('I ___ my rubber! ' + NO, ['has got', 'have got', "hasn't got", "haven't got"], "haven't got"),
+    MC('We ___ a talent show at school. ' + OK, ['has got', 'have got', "hasn't got", "haven't got"], 'have got'),
+    MC('Holly ___ her lucky charm. ' + NO, ['has got', 'have got', "hasn't got", "haven't got"], "hasn't got")
+  ] },
+  { id: 'have-5', topic: 'have', title: 'Fragen: Have oder Has?', intro: 'Has für he, she, it und Nomen in der Einzahl. Sonst Have.', keep: true, items: [
+    MC('___ Dave got a computer?', ['Have', 'Has'], 'Has'),
+    MC('___ you got a pen?', ['Have', 'Has'], 'Have'),
+    MC('___ Olivia and Holly got skates?', ['Have', 'Has'], 'Have'),
+    MC('___ the cafeteria got pudding?', ['Have', 'Has'], 'Has'),
+    MC('___ your grandparents got a dog?', ['Have', 'Has'], 'Have'),
+    MC('___ Mr Swindon got an office?', ['Have', 'Has'], 'Has'),
+    MC('___ we got a test today?', ['Have', 'Has'], 'Have'),
+    MC('___ everyone got an exercise book?', ['Have', 'Has'], 'Has', 'everyone = Einzahl'),
+    MC('___ your school got a recording studio?', ['Have', 'Has'], 'Has'),
+    MC('___ I got sweets in my schoolbag?', ['Have', 'Has'], 'Have')
+  ] },
+  { id: 'have-6', topic: 'have', title: 'Fragen bauen mit have got', intro: 'Tippe die Wörter in der richtigen Reihenfolge an.', items: [
+    OR('Have you got a ruler?', 'Have/Has + Person + got + …?'),
+    OR('Has Holly got a pink pencil case?', 'Has + Holly + got + …?'),
+    OR('Have the students got a test today?', 'Have + the students + got + …?'),
+    OR('Has the school got a recording studio?', 'Has + the school + got + …?'),
+    OR('Have they got pocket money?', 'Have + they + got + …?'),
+    OR('Has Jay got a favourite colour?', 'Has + Jay + got + …?'),
+    OR('Has your school got a cafeteria?', 'Has + your school + got + …?'),
+    OR("We haven't got a pet.", "Person + haven't got + …")
+  ] },
+  { id: 'have-7', topic: 'have', title: 'Kurzantworten', intro: 'Wähle die passende Kurzantwort. ' + OK + ' = ja, ' + NO + ' = nein.', items: [
+    MC('Have you got a question, Luke? ' + OK, ['Yes, I have.', "Yes, I've.", 'Yes, I has.', "No, I haven't."], 'Yes, I have.', "In Kurzantworten nie die Kurzform: Yes, I have. (nicht: Yes, I've.)"),
+    MC('Has Holly got a pink pencil case? ' + OK, ['Yes, she has.', "Yes, she's.", 'Yes, she have.', "No, she hasn't."], 'Yes, she has.'),
+    MC('Has Jay got a favourite colour? ' + NO, ["No, he hasn't.", "No, he haven't.", "No, she hasn't.", 'Yes, he has.'], "No, he hasn't."),
+    MC('Have the students got an English test today? ' + OK, ['Yes, they have.', 'Yes, they has.', 'Yes, he has.', "No, they haven't."], 'Yes, they have.'),
+    MC('Has your school got a recording studio? ' + NO, ["No, it hasn't.", "No, it haven't.", "No, she hasn't.", 'Yes, it has.'], "No, it hasn't."),
+    MC('Have Luke and Dave got a new tutor? ' + NO, ["No, they haven't.", "No, they hasn't.", "No, he hasn't.", 'Yes, they have.'], "No, they haven't."),
+    MC('Has Mr Swindon got a planner? ' + OK, ['Yes, he has.', 'Yes, he have.', "Yes, he's.", "No, he hasn't."], 'Yes, he has.'),
+    MC('Have you got a computer, Dave? ' + OK, ['Yes, I have.', 'Yes, you have.', 'Yes, I has.', "No, I haven't."], 'Yes, I have.'),
+    MC('Has Olivia got a problem? ' + NO, ["No, she hasn't.", "No, she haven't.", "No, he hasn't.", 'Yes, she has.'], "No, she hasn't."),
+    MC('Has the classroom got new chairs? ' + OK, ['Yes, it has.', 'Yes, it have.', 'Yes, they has.', "No, it hasn't."], 'Yes, it has.'),
+    MC('Have you and Holly got sweets? ' + NO, ["No, we haven't.", "No, we hasn't.", "No, I haven't.", 'Yes, we have.'], "No, we haven't.", 'you and Holly = ihr → Antwort mit we'),
+    MC('Has Sherlock got a ball? ' + OK, ['Yes, he has.', 'Yes, he have.', "Yes, he's got.", "No, he hasn't."], 'Yes, he has.')
+  ] },
+  { id: 'have-8', topic: 'have', title: 'Finde den Fehler', intro: 'Jeder Satz hat einen Fehler. Wähle den richtigen Satz.', items: [
+    MC("We've't got a pet.", ["We haven't got a pet.", "We'ven't got a pet.", "We hasn't got a pet."], "We haven't got a pet."),
+    MC("Holly haven't got her lucky charm.", ["Holly hasn't got her lucky charm.", "Holly haven't her lucky charm.", "Holly not has got her lucky charm."], "Holly hasn't got her lucky charm."),
+    MC('Our tutor group have got a new student.', ['Our tutor group has got a new student.', 'Our tutor group haves got a new student.', 'Our tutor group got a new student.'], 'Our tutor group has got a new student.'),
+    MC('I has got a ruler.', ['I have got a ruler.', "I's got a ruler.", 'I got has a ruler.'], 'I have got a ruler.'),
+    MC('Has you got a question?', ['Have you got a question?', 'You have got a question?', 'Have you a question got?'], 'Have you got a question?'),
+    MC("Jay hasn't a computer.", ["Jay hasn't got a computer.", "Jay haven't got a computer.", "Jay not has got a computer."], "Jay hasn't got a computer."),
+    MC('We have got rubber in the pencil case.', ['We have got a rubber in the pencil case.', 'We have got an rubber in the pencil case.', 'We has got a rubber in the pencil case.'], 'We have got a rubber in the pencil case.', 'Bei einem Ding in der Einzahl brauchst du a/an.'),
+    MC('Have Luke got a dog?', ['Has Luke got a dog?', 'Luke has got a dog?', 'Has Luke a dog got?'], 'Has Luke got a dog?'),
+    MC("She's got an pen.", ["She's got a pen.", "She've got a pen.", "She's got a pens."], "She's got a pen."),
+    MC("They hasn't got sweets.", ["They haven't got sweets.", "They hasn't got sweet.", "They not have got sweets."], "They haven't got sweets.")
+  ] },
+  { id: 'have-9', topic: 'have', title: 'Übersetzen: have got', intro: 'Schreibe den Satz auf Englisch. Lang- und Kurzform sind beide richtig.', items: [
+    TY('Ich habe einen Hund.', ["I've got a dog."]),
+    TY('Sie hat ein Lineal. (Holly)', ["She's got a ruler."]),
+    TY('Wir haben keine Süßigkeiten.', ["We haven't got sweets.", "We haven't got any sweets."]),
+    TY('Hast du einen Füller?', 'Have you got a pen?'),
+    TY('Die Schule hat eine Cafeteria.', 'The school has got a cafeteria.'),
+    TY('Luke hat kein Federmäppchen.', "Luke hasn't got a pencil case."),
+    TY('Haben sie Taschengeld? (sie = Mehrzahl)', 'Have they got pocket money?'),
+    TY('Hat Dave einen Computer? – Nein, hat er nicht.', ["Has Dave got a computer? – No, he hasn't.", "Has Dave got a computer? No, he hasn't."]),
+    TY('Unsere Klasse hat einen neuen Schüler.', ['Our tutor group has got a new student.', 'Our class has got a new student.'], 'Klasse = tutor group (oder class)'),
+    TY('Ich habe eine Frage.', "I've got a question.")
+  ] },
+
+  // ---------- Writing ----------
+  { id: 'write-1', topic: 'write', title: 'Lückentext: My school', intro: 'Lies den Text über eine Schule und wähle das richtige Wort.', keep: true, items: [
+    MC('My school ___ a big cafeteria.', ['has got', 'have got'], 'has got'),
+    MC('___ got a music room too.', ["We've", "We's"], "We've"),
+    MC('But we ___ a recording studio.', ["haven't got", "hasn't got"], "haven't got"),
+    MC("___ a shop at my school.", ["There's", 'There are'], "There's", "There's (= There is) + Einzahl"),
+    MC('___ lots of computers in the computer room.', ['There are', "There's"], 'There are', 'There are + Mehrzahl'),
+    MC('The students ___ buy pens and rulers in the shop.', ['can', 'has'], 'can'),
+    MC('But we ___ buy sweets there.', ["can't", "haven't"], "can't"),
+    MC('Students at my school ___ a uniform.', ["haven't got", "hasn't got"], "haven't got"),
+    MC('___ tutor is Mrs Becker.', ['Our', 'We'], 'Our'),
+    MC('In the art room ___ can look at nice pictures.', ['we', 'our'], 'we'),
+    MC('___ favourite room is the music room.', ['My', 'I'], 'My')
+  ] },
+  { id: 'write-2', topic: 'write', title: 'Sätze bauen: My school', intro: 'Bau die Sätze mit den nützlichen Wendungen.', items: [
+    OR("In the art room we've got lots of pictures.", 'In the … we\'ve got …', ["We've got lots of pictures in the art room."]),
+    OR("Our school hasn't got a recording studio.", "Our school hasn't got …"),
+    OR('Students at our school have got a planner.', 'Students at our school have got …'),
+    OR("There isn't a machine for sweets.", "There isn't …"),
+    OR('The students can buy pens in the shop.', 'The students can …', ['In the shop the students can buy pens.']),
+    OR("We've got a cafeteria too, but we haven't got a shop.", "We've got … too, but we haven't got …"),
+    OR('My favourite room is the music room.', 'My favourite room is …'),
+    OR("Teachers at our school haven't got a uniform.", "Teachers at our school haven't got …")
+  ] },
+  { id: 'write-3', topic: 'write', title: 'Schreiben: A room in my school', write: true,
+    intro: 'Wähle einen Raum in deiner Schule (classroom, cafeteria, art room, computer room …). Schreibe mindestens 6 Sätze darüber.',
+    phrases: ["In the … we've got …", "We haven't got …", 'There is / There are …', "There isn't / There aren't …", 'The students can …', "But we can't …", 'My favourite room is …'],
+    model: "My favourite room at school is the art room. In the art room we've got big tables and lots of pictures. There are pencils and rulers for everyone. We haven't got a computer in the art room. The students can look at the pictures and draw. But we can't eat sweets there! Our art teacher is very nice." },
+  { id: 'write-4', topic: 'write', title: 'Schreiben: My school and TTS', write: true,
+    intro: 'Vergleiche deine Schule mit Thomas Tallis School (TTS). Was hat TTS, was hat deine Schule? Schreibe mindestens 6 Sätze.',
+    phrases: ['TTS has got / hasn\'t got …', 'Our school has got / hasn\'t got …', "We've got … too, but we haven't got …", 'Students at TTS have got …', 'Students at our school haven\'t got …', "I've got / I haven't got …"],
+    model: "TTS has got a recording studio, but our school hasn't got a recording studio. We've got a cafeteria too. Students at TTS have got a blue uniform. Students at our school haven't got a uniform. TTS has got a school shop. At our school we can buy sweets from a machine. I've got a planner, but I haven't got a lucky charm!" },
+
+  // ---------- Vocabulary ----------
+  { id: 'voc-1', topic: 'vocab', title: 'Karteikarten', flash: true, intro: 'Lies das englische Wort. Weißt du, was es heißt? Tippe auf die Karte zum Umdrehen.' },
+  { id: 'voc-2', topic: 'vocab', title: 'Englisch → Deutsch (Auswahl)', gen: 'en2de', n: 15, intro: 'Was heißt das Wort auf Deutsch?' },
+  { id: 'voc-3', topic: 'vocab', title: 'Deutsch → Englisch (Auswahl)', gen: 'de2en', n: 15, intro: 'Was heißt das Wort auf Englisch?' },
+  { id: 'voc-4', topic: 'vocab', title: 'Deutsch → Englisch (schreiben)', gen: 'type', n: 15, intro: 'Schreibe das englische Wort. Achte auf die Schreibweise! (to bei Verben darfst du weglassen.)' },
+  { id: 'voc-5', topic: 'vocab', title: 'Welches Wort passt?', intro: 'Setze das passende Wort ein.', items: [
+    MC('Lunch at school is in the ___.', ['cafeteria', 'office', 'pencil case', 'talent show'], 'cafeteria'),
+    MC('My pens and pencils are in my ___.', ['pencil case', 'restaurant', 'carrot', 'rule'], 'pencil case'),
+    MC("Mr Swindon is the ___ of Luke's tutor group.", ['tutor', 'uniform', 'project', 'finger'], 'tutor'),
+    MC('My grandpa and grandma are my ___.', ['grandparents', 'sweets', 'teachers', 'rubbers'], 'grandparents'),
+    MC('At TTS the students have got a blue ___.', ['uniform', 'lunch', 'question', 'job'], 'uniform'),
+    MC('Have you got a ___ for Jay? – Yes: Where is your old school?', ['question', 'carrot', 'machine', 'money'], 'question'),
+    MC("I've got five euros ___ for the school shop.", ['pocket money', 'pudding', 'planner', 'finger'], 'pocket money'),
+    MC('Jay likes to ___ and dance.', ['sing', 'pay', 'call', 'text'], 'sing'),
+    MC('The students make music in the ___.', ['recording studio', 'cafeteria', 'shop', 'office'], 'recording studio'),
+    MC('A ___ is orange and good for you.', ['carrot', 'sweets', 'ruler', 'rubber'], 'carrot'),
+    MC("Where's Mr Swindon? – He's in his ___.", ['office', 'schoolbag', 'pudding', 'finger'], 'office'),
+    MC('"___, everyone!" says Mr Swindon in the morning.', ['Good morning', 'Wait and see', 'Well', 'Something'], 'Good morning'),
+    MC("What's in the box? – ___!", ['Wait and see', 'Good morning', 'Silly', 'Today'], 'Wait and see'),
+    MC('Ice cream is my favourite ___.', ['pudding', 'rule', 'job', 'test'], 'pudding'),
+    MC('His name is Thomas, but we ___ him Tom.', ['call', 'help', 'buy', 'pay'], 'call'),
+    MC('Can you ___ me with my English, please?', ['help', 'text', 'dance', 'buy'], 'help'),
+    MC("There's an English ___ today!", ['test', 'food', 'finger', 'art'], 'test'),
+    MC("My dad's ___ is at a school. He's a teacher.", ['job', 'project', 'lunch', 'rule'], 'job'),
+    MC('In the ___ room we look at pictures.', ['art', 'money', 'food', 'well'], 'art'),
+    MC('You can buy sweets from the ___ in the cafeteria.', ['machine', 'finger', 'tutor', 'question'], 'machine')
+  ] },
+  { id: 'voc-6', topic: 'vocab', title: 'a oder an?', intro: 'an steht vor einem Vokal-<b>Laut</b> (a, e, i, o, u). Es zählt, wie man das Wort spricht!', keep: true, items: [
+    MC('___ exercise book', ['a', 'an'], 'an'),
+    MC('___ pencil case', ['a', 'an'], 'a'),
+    MC('___ English test', ['a', 'an'], 'an'),
+    MC('___ orange pen', ['a', 'an'], 'an'),
+    MC('___ ruler', ['a', 'an'], 'a'),
+    MC('___ idea', ['a', 'an'], 'an'),
+    MC('___ question', ['a', 'an'], 'a'),
+    MC('___ old school', ['a', 'an'], 'an'),
+    MC('___ art room', ['a', 'an'], 'an'),
+    MC('___ cafeteria', ['a', 'an'], 'a'),
+    MC('___ office', ['a', 'an'], 'an'),
+    MC('___ new planner', ['a', 'an'], 'a'),
+    MC('___ interview', ['a', 'an'], 'an'),
+    MC('___ uniform', ['a', 'an'], 'a', 'uniform spricht man [ju:nɪfɔ:m] – es klingt wie „ju“, also a uniform.')
+  ] },
+
+  // ---------- Probe-Test ----------
+  { id: 'test-1', topic: 'test', title: 'Probe-Test (20 Aufgaben)', gen: 'test', n: 20, intro: 'Gemischte Aufgaben aus allen Themen – wie in der Klassenarbeit.' },
+  { id: 'test-2', topic: 'test', title: 'Probe-Test: nur Grammatik', gen: 'testgram', n: 20, intro: 'can/can\'t, my/your/…, have got – gemischt.' }
+];
+
+// Vokabeln Unit 2: Check-in + Station 1 (S. 199–200)
+const VOCAB = [
+  ['planner', 'Handbuch; Kalender'], ['rule', 'Regel'], ['lunch', 'Mittagessen'], ['cafeteria', 'Cafeteria'],
+  ['money', 'Geld'], ['machine', 'Automat; Maschine; Gerät'], ['to pay (for)', 'bezahlen'], ['finger', 'Finger'],
+  ['art', 'Kunst; Kunstunterricht'], ['to buy', 'kaufen'], ['sweets', 'Süßigkeiten; Bonbons'], ['shop', 'Geschäft; Laden'],
+  ['pen', 'Füller'], ['pencil', 'Bleistift; Buntstift'], ['pencil case', 'Federmäppchen; Mäppchen'], ['exercise book', 'Übungsheft'],
+  ['ruler', 'Lineal'], ['rubber', 'Radiergummi'], ['uniform', 'Uniform'], ['recording studio', 'Aufnahmestudio; Tonstudio'],
+  ['classroom', 'Klassenzimmer'],
+  ['to have got', 'besitzen; haben'], ['question', 'Frage'], ['an', 'ein/eine (vor a, e, i, o, u)'], ['test', 'Test; Klassenarbeit; Prüfung'],
+  ['today', 'heute'], ['schoolbag', 'Schultasche'], ['tutor', 'Klassenlehrer/-in'], ['tutor group', 'Klasse (in einer englischen Schule)'],
+  ['Good morning.', 'Guten Morgen.'], ['everyone', 'jeder; alle'], ['to call', 'nennen'], ['him', 'ihn; ihm'],
+  ['no', 'kein/keine'], ['to sing', 'singen'], ['to dance', 'tanzen'], ['project', 'Projekt'],
+  ['well', 'tja; nun'], ['something', 'etwas'], ['Wait and see!', 'Warte ab!'], ['to look at', 'anschauen; ansehen'],
+  ['silly', 'dumm; doof; albern'], ['teacher', 'Lehrer/-in'], ['office', 'Büro'], ['job', 'Arbeit; Aufgabe; Job'],
+  ['grandparents', 'Großeltern'], ['talent show', 'Talentwettbewerb'], ['to text', 'eine SMS schicken'], ['food', 'Essen; Lebensmittel'],
+  ['carrot', 'Karotte; Möhre'], ['pudding', 'Pudding; Nachtisch'], ['restaurant', 'Restaurant; Gaststätte'], ['to help', 'helfen'],
+  ['pocket money', 'Taschengeld']
+];
+
+</script>
+<script>
+// ===== App =====
+const $main = document.getElementById('main');
+const $title = document.getElementById('title');
+const $back = document.getElementById('back');
+
+function esc(s) { return String(s == null ? '' : s).replace(/[&<>"']/g, c => ({ '&': '&amp;', '<': '&lt;', '>': '&gt;', '"': '&quot;', "'": '&#39;' }[c])); }
+function strip(h) { const d = document.createElement('div'); d.innerHTML = h; return d.textContent.replace(/\s+/g, ' ').trim(); }
+function shuffle(a) { a = a.slice(); for (let i = a.length - 1; i > 0; i--) { const j = Math.floor(Math.random() * (i + 1)); [a[i], a[j]] = [a[j], a[i]]; } return a; }
+function pick(a, n) { return shuffle(a).slice(0, n); }
+function lsGet(k, d) { try { const v = localStorage.getItem(k); return v ? JSON.parse(v) : d; } catch (e) { return d; } }
+function lsSet(k, v) { try { localStorage.setItem(k, JSON.stringify(v)); } catch (e) { } }
+function uid() { return Date.now().toString(36) + Math.random().toString(36).slice(2, 8); }
+function cls(p) { return p >= 80 ? 'good' : p >= 50 ? 'mid' : 'bad'; }
+function fmtDate(ts) { const d = new Date(ts); return isNaN(d) ? '' : d.toLocaleDateString('de-DE', { day: '2-digit', month: '2-digit' }) + ' ' + d.toLocaleTimeString('de-DE', { hour: '2-digit', minute: '2-digit' }); }
+function exById(id) { return EXERCISES.find(e => e.id === id); }
+function topicById(id) { return TOPICS.find(t => t.id === id); }
+
+// ---------- Daten: lokal + Google Sheet ----------
+let remoteRows = null, remoteStatus = CONFIG.SHEET_URL ? 'lädt …' : 'nicht eingerichtet', remoteAt = 0;
+
+function normRow(r) {
+  const exId = String(r.ex || '').split(' ')[0];
+  return { id: String(r.id || ''), ts: new Date(r.ts).getTime() || 0, kid: String(r.kid || ''), topic: String(r.topic || ''), exId: exId,
+    exTitle: String(r.ex || '').slice(exId.length + 1), correct: +r.correct || 0, total: +r.total || 0, percent: +r.percent || 0,
+    seconds: +r.seconds || 0, mistakes: String(r.mistakes || ''), text: String(r.text || '') };
+}
+function allRows(kid) {
+  const map = new Map();
+  (remoteRows || []).forEach(r => map.set(r.id, r));
+  lsGet('eng_hist', []).map(normRow).forEach(r => { if (!map.has(r.id)) map.set(r.id, r); });
+  let rows = [...map.values()].filter(r => r.kid && r.kid !== 'TEST');
+  if (kid != null) rows = rows.filter(r => r.kid === kid);
+  return rows.sort((a, b) => b.ts - a.ts);
+}
+async function refreshRemote(force) {
+  if (!CONFIG.SHEET_URL) return false;
+  if (!force && Date.now() - remoteAt < 20000) return false;
+  remoteAt = Date.now();
+  try {
+    const r = await fetch(CONFIG.SHEET_URL + '?t=' + Date.now());
+    const j = await r.json();
+    const before = remoteRows ? remoteRows.length : -1;
+    remoteRows = (j.rows || []).map(normRow);
+    remoteStatus = 'verbunden';
+    return remoteRows.length !== before;
+  } catch (e) { remoteStatus = 'offline (nur dieses Gerät)'; return false; }
+}
+async function flushQueue() {
+  if (!CONFIG.SHEET_URL) return;
+  const q = lsGet('eng_queue', []);
+  const left = [];
+  for (const rec of q) {
+    try {
+      await fetch(CONFIG.SHEET_URL, { method: 'POST', mode: 'no-cors', headers: { 'Content-Type': 'text/plain;charset=utf-8' }, body: JSON.stringify(rec) });
+    } catch (e) { left.push(rec); }
+  }
+  lsSet('eng_queue', left);
+  remoteAt = 0;
+}
+function saveRecord(rec) {
+  const h = lsGet('eng_hist', []); h.push(rec); lsSet('eng_hist', h.slice(-500));
+  const q = lsGet('eng_queue', []); q.push(rec); lsSet('eng_queue', q);
+  flushQueue();
+}
+function bestByEx(rows) {
+  const m = {};
+  rows.forEach(r => {
+    const b = m[r.exId] || (m[r.exId] = { best: 0, last: null, n: 0, lastTs: 0 });
+    b.best = Math.max(b.best, r.percent); b.n++;
+    if (r.ts > b.lastTs) { b.lastTs = r.ts; b.last = r.percent; }
+  });
+  return m;
+}
+
+// ---------- Routing ----------
+function go(h) { location.hash = h; }
+window.addEventListener('hashchange', render);
+let run = null;
+
+function render() {
+  const h = location.hash.replace(/^#\/?/, '');
+  const p = h.split('/');
+  window.scrollTo(0, 0);
+  if (p[0] === 'k' && CONFIG.KIDS[+p[1]]) {
+    const k = +p[1];
+    if (p[2] === 't') return viewTopic(k, p[3]);
+    if (p[2] === 'e') return startExercise(k, p[3]);
+    return viewKid(k);
+  }
+  if (p[0] === 'eltern') return viewParent();
+  viewHome();
+}
+function setHeader(title, backTo) {
+  $title.textContent = title;
+  $back.style.display = backTo == null ? 'none' : '';
+  $back.onclick = () => go(backTo);
+}
+
+// ---------- Startseite ----------
+function viewHome() {
+  setHeader('Englisch üben – Green Line 1', null);
+  $main.innerHTML = '<div class="card center"><div class="big">🇬🇧</div><b>Wer übt heute?</b><div class="mut">Tippe auf deinen Namen.</div></div>' +
+    '<div class="grid">' + CONFIG.KIDS.map((k, i) => `<button class="tile" onclick="go('k/${i}')"><span class="ic">${k.emoji || '🙂'}</span><b>${esc(k.name)}</b></button>`).join('') + '</div>' +
+    '<button class="btn sec" style="margin-top:24px" onclick="go(\'eltern\')">👪 Eltern-Bereich</button>' +
+    '<div class="status" id="hs">Classtest No. 2 · Unit 2 · Speicher: ' + esc(remoteStatus) + '</div>';
+  flushQueue();
+  refreshRemote().then(() => { const s = document.getElementById('hs'); if (s) s.textContent = 'Classtest No. 2 · Unit 2 · Speicher: ' + remoteStatus; });
+}
+
+// ---------- Kind: Themen ----------
+function topicExercises(t) { return EXERCISES.filter(e => e.topic === t); }
+function viewKid(k) {
+  const kid = CONFIG.KIDS[k];
+  setHeader(kid.emoji + ' ' + kid.name, '');
+  const draw = () => {
+    const best = bestByEx(allRows(kid.name));
+    let total = 0, done = 0;
+    const tiles = TOPICS.map(t => {
+      const exs = topicExercises(t.id);
+      const d = exs.filter(e => (best[e.id] || {}).best >= 80).length;
+      total += exs.length; done += d;
+      const pct = Math.round(d / exs.length * 100);
+      return `<button class="tile" onclick="go('k/${k}/t/${t.id}')"><span class="ic">${t.icon}</span><b>${esc(t.title)}</b><small>${esc(t.sub)}</small><div class="bar"><i style="width:${pct}%"></i></div><small>${d} / ${exs.length} geschafft</small></button>`;
+    }).join('');
+    const pct = Math.round(done / total * 100);
+    $main.innerHTML = `<div class="card"><b>Hallo ${esc(kid.name)}!</b> Du hast <b>${done} von ${total}</b> Übungen mit mindestens 80 % geschafft.<div class="bar"><i style="width:${pct}%"></i></div></div><div class="grid">${tiles}</div>` +
+      '<div class="status">Eine Übung gilt als geschafft ab 80 % richtig.</div>';
+  };
+  draw();
+  refreshRemote().then(ch => { if (ch && location.hash.replace(/^#\/?/, '') === 'k/' + k) draw(); });
+}
+function viewTopic(k, tid) {
+  const t = topicById(tid), kid = CONFIG.KIDS[k];
+  if (!t) return go('k/' + k);
+  setHeader(t.icon + ' ' + t.title, 'k/' + k);
+  const best = bestByEx(allRows(kid.name));
+  const rule = RULES[tid] ? `<div class="rule">${RULES[tid]}</div>` : '';
+  $main.innerHTML = rule + topicExercises(tid).map(e => {
+    const b = best[e.id];
+    const badge = b ? `<span class="badge ${cls(b.best)}">${b.best} %</span>` : '<span class="badge">neu</span>';
+    const n = e.items ? e.items.length : e.flash ? VOCAB.length : e.n || '';
+    const kind = e.write ? 'Freies Schreiben' : e.flash ? n + ' Karten' : n + ' Aufgaben';
+    return `<button class="row" onclick="go('k/${k}/e/${e.id}')"><span class="tx"><b>${esc(e.title)}</b><small>${kind}${b ? ' · ' + b.n + '× geübt' : ''}</small></span>${badge}</button>`;
+  }).join('');
+}
+
+// ---------- Aufgaben erzeugen ----------
+function vocabVariants(en) {
+  const base = [en, en.replace(/\s*\(.*?\)/g, ''), en.replace(/[()]/g, '')];
+  const out = new Set();
+  base.forEach(b => { out.add(b); out.add(b.replace(/^to /, '')); });
+  return [...out];
+}
+function genItems(ex) {
+  if (ex.gen === 'en2de') return pick(VOCAB, ex.n).map(v => MC('<b>' + esc(v[0]) + '</b>', shuffle([v[1]].concat(pick(VOCAB.filter(x => x !== v), 3).map(x => x[1]))), v[1]));
+  if (ex.gen === 'de2en') return pick(VOCAB, ex.n).map(v => MC('<b>' + esc(v[1]) + '</b>', shuffle([v[0]].concat(pick(VOCAB.filter(x => x !== v), 3).map(x => x[0]))), v[0]));
+  if (ex.gen === 'type') return pick(VOCAB, ex.n).map(v => Object.assign(TY(esc(v[1]), vocabVariants(v[0])), { vocab: true }));
+  if (ex.gen === 'test' || ex.gen === 'testgram') {
+    const topics = ex.gen === 'test' ? ['can', 'poss', 'have', 'write', 'vocab'] : ['can', 'poss', 'have'];
+    let pool = [];
+    EXERCISES.filter(e => topics.includes(e.topic) && e.items).forEach(e => e.items.forEach(it => pool.push(Object.assign({}, it, { keep: e.keep }))));
+    if (ex.gen === 'test') pool = pool.concat(genItems({ gen: 'type', n: 6 }));
+    return pick(pool, ex.n);
+  }
+  return [];
+}
+function prepItems(ex) {
+  const src = ex.items ? ex.items.map(it => Object.assign({}, it, { keep: ex.keep })) : genItems(ex);
+  return shuffle(src).map(it => {
+    if (it.t === 'mc' && !it.keep) it.o = shuffle(it.o);
+    if (it.t === 'order') {
+      const w = it.s.split(' ');
+      let s = shuffle(w);
+      for (let i = 0; i < 5 && s.join(' ') === it.s && w.length > 2; i++) s = shuffle(w);
+      it.words = s;
+    }
+    return it;
+  });
+}
+
+// ---------- Antworten prüfen ----------
+function canon(s) {
+  s = String(s).toLowerCase().replace(/[’‘`´]/g, "'").replace(/[–—]/g, ' ').replace(/ - /g, ' ');
+  s = s.replace(/\bcan't\b/g, 'cannot').replace(/\bcan not\b/g, 'cannot');
+  s = s.replace(/(\w)'s got\b/g, '$1 has got');
+  s = s.replace(/n't\b/g, ' not').replace(/'ve\b/g, ' have').replace(/'m\b/g, ' am').replace(/'re\b/g, ' are');
+  s = s.replace(/\b(he|she|it|what|where|who|that|there|how)'s\b/g, '$1 is');
+  s = s.replace(/[.!?,;:"()]/g, ' ').replace(/\s+/g, ' ').trim();
+  return s;
+}
+function canonV(s) { return canon(s).replace(/^to /, ''); }
+function lev(a, b) {
+  const m = []; for (let i = 0; i <= a.length; i++) { m[i] = [i]; }
+  for (let j = 1; j <= b.length; j++) m[0][j] = j;
+  for (let i = 1; i <= a.length; i++) for (let j = 1; j <= b.length; j++) m[i][j] = Math.min(m[i - 1][j] + 1, m[i][j - 1] + 1, m[i - 1][j - 1] + (a[i - 1] === b[j - 1] ? 0 : 1));
+  return m[a.length][b.length];
+}
+
+// ---------- Übung starten ----------
+function startExercise(k, exId, retryItems) {
+  const ex = exById(exId), kid = CONFIG.KIDS[k];
+  if (!ex) return go('k/' + k);
+  setHeader(ex.title, 'k/' + k + '/t/' + ex.topic);
+  if (ex.write) return viewWrite(k, ex);
+  if (ex.flash) return viewFlashStart(k, ex);
+  run = { k: k, kid: kid.name, ex: ex, items: retryItems || prepItems(ex), i: 0, correct: 0, wrong: [], mistakes: [], start: Date.now(), retry: !!retryItems };
+  renderItem();
+}
+function itemHead() {
+  const r = run;
+  return `<div class="prog"><span>Aufgabe ${r.i + 1} / ${r.items.length}${r.retry ? ' · Wiederholung' : ''}</span><span>✓ ${r.correct}</span></div><div class="bar" style="margin-bottom:12px"><i style="width:${Math.round(r.i / r.items.length * 100)}%"></i></div>`;
+}
+function qHtml(q) { return q.replace(/___/g, '<span class="gap">___</span>'); }
+function renderItem() {
+  const r = run, it = r.items[r.i];
+  const intro = r.i === 0 && r.ex.intro ? `<div class="rule">${r.ex.intro}</div>` : '';
+  let body = '';
+  if (it.t === 'mc') {
+    body = `<div class="q">${qHtml(it.q)}</div><div class="opts">` + it.o.map((o, n) => `<button class="opt" data-n="${n}">${esc(o)}</button>`).join('') + '</div>';
+  } else if (it.t === 'type') {
+    body = `<div class="q">${it.q}</div><input type="text" id="inp" autocomplete="off" autocapitalize="off" autocorrect="off" spellcheck="false" placeholder="Auf Englisch …"><button class="btn" id="chk">Prüfen</button>`;
+  } else if (it.t === 'order') {
+    body = '<div class="mut" style="margin-bottom:8px">Dein Satz:</div><div class="answer chips" id="ans"></div><div class="chips" id="pool"></div><button class="btn" id="chk" disabled>Prüfen</button>';
+  }
+  $main.innerHTML = itemHead() + intro + `<div class="card">${body}<div id="fb"></div></div>`;
+  if (it.t === 'mc') $main.querySelectorAll('.opt').forEach(b => b.onclick = () => answerMC(+b.dataset.n));
+  if (it.t === 'type') {
+    const inp = document.getElementById('inp'); inp.focus();
+    inp.onkeydown = e => { if (e.key === 'Enter') answerType(); };
+    document.getElementById('chk').onclick = answerType;
+  }
+  if (it.t === 'order') setupOrder(it);
+}
+function feedback(ok, given, expected, extra) {
+  const r = run, it = r.items[r.i];
+  if (ok) r.correct++;
+  else { r.wrong.push(it); r.mistakes.push(strip(it.q).slice(0, 90) + ' → ' + given + ' (richtig: ' + expected + ')'); }
+  const praise = ['Super!', 'Richtig!', 'Genau!', 'Klasse!', 'Stark!'][Math.floor(Math.random() * 5)];
+  const hint = it.h ? `<div>💡 ${it.h}</div>` : '';
+  const fb = document.getElementById('fb');
+  fb.innerHTML = `<div class="fb ${ok ? 'right' : 'wrong'}">${ok ? '✅ <b>' + praise + '</b>' : '❌ <b>Leider falsch.</b> Richtig ist: <b>' + esc(expected) + '</b>'}${extra || ''}${!ok || it.h ? hint : ''}</div><button class="btn" id="next">${r.i + 1 < r.items.length ? 'Weiter →' : 'Ergebnis ansehen'}</button>`;
+  const nx = document.getElementById('next'); nx.onclick = nextItem; nx.scrollIntoView({ behavior: 'smooth', block: 'nearest' });
+}
+function answerMC(n) {
+  const it = run.items[run.i], given = it.o[n], ok = given === it.a;
+  $main.querySelectorAll('.opt').forEach((b, i) => { b.disabled = true; if (it.o[i] === it.a) b.classList.add('right'); else if (i === n) b.classList.add('wrong'); });
+  feedback(ok, given, it.a);
+}
+function answerType() {
+  const it = run.items[run.i], inp = document.getElementById('inp');
+  const given = inp.value.trim(); if (!given) { inp.focus(); return; }
+  inp.disabled = true; document.getElementById('chk').style.display = 'none';
+  const f = it.vocab ? canonV : canon;
+  const g = f(given);
+  const ok = it.a.some(a => f(a) === g);
+  let extra = '';
+  if (!ok && it.a.some(a => lev(f(a), g) <= 2)) extra = '<div>Fast! Achte genau auf die Schreibweise.</div>';
+  feedback(ok, given, it.a[0], extra);
+}
+function setupOrder(it) {
+  const chosen = [];
+  const pool = document.getElementById('pool'), ans = document.getElementById('ans'), chk = document.getElementById('chk');
+  const draw = () => {
+    pool.innerHTML = it.words.map((w, i) => chosen.includes(i) ? '' : `<button class="chip" data-i="${i}">${esc(w)}</button>`).join('');
+    ans.innerHTML = chosen.map((i, p) => `<button class="chip" data-p="${p}">${esc(it.words[i])}</button>`).join('');
+    pool.querySelectorAll('.chip').forEach(b => b.onclick = () => { chosen.push(+b.dataset.i); draw(); });
+    ans.querySelectorAll('.chip').forEach(b => b.onclick = () => { chosen.splice(+b.dataset.p, 1); draw(); });
+    chk.disabled = chosen.length !== it.words.length;
+  };
+  draw();
+  chk.onclick = () => {
+    const built = chosen.map(i => it.words[i]).join(' ');
+    const ok = [it.s].concat(it.alts).some(s => s.toLowerCase() === built.toLowerCase());
+    pool.innerHTML = ''; ans.querySelectorAll('.chip').forEach(b => b.disabled = true);
+    chk.style.display = 'none';
+    feedback(ok, built, it.s);
+  };
+}
+function nextItem() {
+  run.i++;
+  if (run.i < run.items.length) renderItem(); else finish();
+}
+function stars(p) { return p >= 90 ? '⭐⭐⭐' : p >= 70 ? '⭐⭐' : p >= 50 ? '⭐' : '💪'; }
+function finish() {
+  const r = run, total = r.items.length, pct = Math.round(r.correct / total * 100);
+  const sec = Math.round((Date.now() - r.start) / 1000);
+  if (!r.retry) saveRecord({ id: uid(), ts: Date.now(), kid: r.kid, topic: r.ex.topic, ex: r.ex.id + ' ' + r.ex.title, correct: r.correct, total: total, percent: pct, seconds: sec, mistakes: r.mistakes.join('\n'), text: '' });
+  const msg = pct >= 90 ? 'Hervorragend!' : pct >= 70 ? 'Gut gemacht!' : pct >= 50 ? 'Schon ganz gut – übe die Fehler nochmal.' : 'Nicht aufgeben! Lies die Regel und versuch es nochmal.';
+  const back = 'k/' + r.k + '/t/' + r.ex.topic;
+  $main.innerHTML = `<div class="card center"><div class="big">${stars(pct)}</div><h2 style="margin:4px 0">${r.correct} von ${total} richtig (${pct} %)</h2><div>${msg}</div>${r.retry ? '<div class="mut">(Wiederholung wird nicht gespeichert)</div>' : ''}</div>` +
+    (r.wrong.length ? `<div class="card"><b>Deine Fehler:</b><div class="mist">${esc(r.mistakes.join('\n'))}</div></div><button class="btn blue" id="retry">Fehler nochmal üben (${r.wrong.length})</button>` : '') +
+    `<button class="btn" id="again">Ganze Übung nochmal</button><button class="btn sec" onclick="go('${back}')">Zurück zur Übersicht</button>`;
+  if (r.wrong.length) document.getElementById('retry').onclick = () => startExercise(r.k, r.ex.id, prepRetry(r.wrong));
+  document.getElementById('again').onclick = () => startExercise(r.k, r.ex.id);
+}
+function prepRetry(items) { return shuffle(items.map(it => Object.assign({}, it))); }
+
+// ---------- Karteikarten ----------
+function viewFlashStart(k, ex) {
+  $main.innerHTML = `<div class="rule">${ex.intro}</div><div class="card"><b>Welche Richtung?</b><button class="btn" id="d1">Englisch → Deutsch</button><button class="btn blue" id="d2">Deutsch → Englisch</button></div>`;
+  document.getElementById('d1').onclick = () => flashRun(k, ex, false, shuffle(VOCAB));
+  document.getElementById('d2').onclick = () => flashRun(k, ex, true, shuffle(VOCAB));
+}
+function flashRun(k, ex, de, deck, retry) {
+  const st = { i: 0, known: 0, unknown: [], start: Date.now() };
+  const draw = () => {
+    const v = deck[st.i], front = de ? v[1] : v[0], back = de ? v[0] : v[1];
+    $main.innerHTML = `<div class="prog"><span>Karte ${st.i + 1} / ${deck.length}${retry ? ' · Wiederholung' : ''}</span><span>✓ ${st.known}</span></div><div class="bar" style="margin-bottom:12px"><i style="width:${Math.round(st.i / deck.length * 100)}%"></i></div>` +
+      `<div class="card flash" id="fc"><b>${esc(front)}</b><small>Tippen zum Umdrehen</small></div><div id="fbtn"></div>`;
+    document.getElementById('fc').onclick = () => {
+      document.getElementById('fc').innerHTML = `<span class="mut" style="font-size:18px">${esc(front)}</span><b style="margin-top:8px">${esc(back)}</b>`;
+      document.getElementById('fbtn').innerHTML = '<div class="two"><button class="btn sec" id="no">❌ Nicht gewusst</button><button class="btn" id="yes">✅ Gewusst</button></div>';
+      document.getElementById('yes').onclick = () => { st.known++; nxt(); };
+      document.getElementById('no').onclick = () => { st.unknown.push(v); nxt(); };
+    };
+  };
+  const nxt = () => { st.i++; if (st.i < deck.length) draw(); else done(); };
+  const done = () => {
+    const pct = Math.round(st.known / deck.length * 100);
+    if (!retry) saveRecord({ id: uid(), ts: Date.now(), kid: CONFIG.KIDS[k].name, topic: ex.topic, ex: ex.id + ' ' + ex.title + (de ? ' (DE→EN)' : ' (EN→DE)'), correct: st.known, total: deck.length, percent: pct, seconds: Math.round((Date.now() - st.start) / 1000), mistakes: st.unknown.map(v => v[0] + ' = ' + v[1]).join('\n'), text: '' });
+    $main.innerHTML = `<div class="card center"><div class="big">${stars(pct)}</div><h2 style="margin:4px 0">${st.known} von ${deck.length} gewusst (${pct} %)</h2></div>` +
+      (st.unknown.length ? `<div class="card"><b>Diese Wörter nochmal lernen:</b><div class="mist">${esc(st.unknown.map(v => v[0] + ' = ' + v[1]).join('\n'))}</div></div><button class="btn blue" id="rt">Nicht gewusste nochmal (${st.unknown.length})</button>` : '') +
+      `<button class="btn sec" onclick="go('k/${k}/t/${ex.topic}')">Zurück zur Übersicht</button>`;
+    if (st.unknown.length) document.getElementById('rt').onclick = () => flashRun(k, ex, de, shuffle(st.unknown), true);
+  };
+  draw();
+}
+
+// ---------- Freies Schreiben ----------
+const WRITE_CHECKS = [
+  ['Mindestens 6 Sätze', t => sentences(t) >= 6],
+  ['have got / has got', t => /\b(i|you|we|they|he|she|it)'(ve|s) got\b|\b(have|has) got\b/i.test(t)],
+  ["haven't got / hasn't got", t => /\b(haven't|hasn't|have not|has not) got\b/i.test(norm(t))],
+  ['can', t => /\bcan\s+[a-z]/i.test(t)],
+  ["can't", t => /\b(can't|cannot)\b/i.test(norm(t))],
+  ['There is / There are', t => /\bthere(?:'s|\s+(?:is|are|isn't|aren't))\b/i.test(norm(t))],
+  ['my / our / their …', t => /\b(my|our|their|his|her|its|your)\b/i.test(t)]
+];
+const WRITE_WARN = [
+  [/\b(he|she|it) have\b/i, 'he/she/it → <b>has</b> got'],
+  [/\b(i|you|we|they) has\b/i, 'I/you/we/they → <b>have</b> got'],
+  [/\b(i|you|we|they)'ven't\b/i, "Verneinung: <b>haven't got</b> (nicht 've n't)"],
+  [/\b(i|you|we|they) hasn't\b/i, "I/you/we/they → <b>haven't</b> got"],
+  [/\b(he|she|it) haven't\b/i, "he/she/it → <b>hasn't</b> got"],
+  [/\bcans\b|\bcan to\b/i, 'can hat nie ein -s und kein to: he can sing'],
+  [/\ba (?:a|e|i|o)[a-z]+/i, 'Vor a, e, i, o → <b>an</b> (an art room, an idea)']
+];
+function norm(t) { return t.replace(/[’‘`´]/g, "'"); }
+function sentences(t) { return norm(t).split(/[.!?]+/).filter(s => s.trim().split(/\s+/).length >= 3).length; }
+function viewWrite(k, ex) {
+  const draftKey = 'eng_draft_' + k + '_' + ex.id;
+  const start = Date.now();
+  $main.innerHTML = `<div class="rule">${ex.intro}</div><div class="card"><b>Nützliche Sätze:</b><div>${ex.phrases.map(p => `<span class="tag">${esc(p)}</span>`).join('')}</div></div>` +
+    `<div class="card"><textarea id="ta" placeholder="Schreibe hier auf Englisch …" autocapitalize="sentences" spellcheck="false"></textarea><ul class="checks" id="ck"></ul><div id="warn"></div><button class="btn" id="sub" disabled>Fertig – abgeben</button></div>`;
+  const ta = document.getElementById('ta');
+  ta.value = lsGet(draftKey, '');
+  const upd = () => {
+    const t = ta.value;
+    lsSet(draftKey, t);
+    document.getElementById('ck').innerHTML = WRITE_CHECKS.map(c => `<li>${c[1](t) ? '✅' : '⬜'} ${esc(c[0])}</li>`).join('');
+    const w = WRITE_WARN.filter(x => x[0].test(norm(t))).map(x => '⚠️ ' + x[1]);
+    document.getElementById('warn').innerHTML = w.length ? `<div class="fb wrong">${w.join('<br>')}</div>` : '';
+    document.getElementById('sub').disabled = sentences(t) < 3;
+  };
+  ta.oninput = upd; upd();
+  document.getElementById('sub').onclick = () => {
+    const t = ta.value.trim();
+    const met = WRITE_CHECKS.filter(c => c[1](t));
+    const pct = Math.round(met.length / WRITE_CHECKS.length * 100);
+    const warns = WRITE_WARN.filter(x => x[0].test(norm(t))).map(x => strip(x[1]));
+    saveRecord({ id: uid(), ts: Date.now(), kid: CONFIG.KIDS[k].name, topic: ex.topic, ex: ex.id + ' ' + ex.title, correct: met.length, total: WRITE_CHECKS.length, percent: pct, seconds: Math.round((Date.now() - start) / 1000), mistakes: warns.join('\n'), text: t });
+    lsSet(draftKey, '');
+    $main.innerHTML = `<div class="card center"><div class="big">${stars(pct)}</div><h2 style="margin:4px 0">${met.length} von ${WRITE_CHECKS.length} Punkten der Checkliste</h2><div class="mut">Dein Text wurde gespeichert. Mama oder Papa können ihn lesen.</div></div>` +
+      `<div class="card"><b>Dein Text:</b><div class="mist">${esc(t)}</div></div>` +
+      (warns.length ? `<div class="card"><b>Prüfe nochmal:</b><div class="mist">${esc(warns.join('\n'))}</div></div>` : '') +
+      `<div class="card"><b>So könnte ein Beispieltext aussehen:</b><div class="mist">${esc(ex.model)}</div></div>` +
+      `<button class="btn" onclick="go('k/${k}/e/${ex.id}')">Neuen Text schreiben</button><button class="btn sec" onclick="go('k/${k}/t/${ex.topic}')">Zurück zur Übersicht</button>`;
+  };
+}
+
+// ---------- Eltern-Bereich ----------
+function viewParent() {
+  setHeader('👪 Eltern-Bereich', '');
+  if (sessionStorage.getItem('eng_parent') !== '1') {
+    $main.innerHTML = '<div class="card"><b>PIN eingeben</b><input type="password" id="pin" inputmode="numeric" style="margin-top:8px"><button class="btn" id="ok">Öffnen</button><div id="pe"></div></div>';
+    const go2 = () => { if (document.getElementById('pin').value === String(CONFIG.PARENT_PIN)) { sessionStorage.setItem('eng_parent', '1'); viewParent(); } else document.getElementById('pe').innerHTML = '<div class="fb wrong">Falsche PIN.</div>'; };
+    document.getElementById('ok').onclick = go2;
+    document.getElementById('pin').onkeydown = e => { if (e.key === 'Enter') go2(); };
+    return;
+  }
+  const sel = sessionStorage.getItem('eng_pkid') || CONFIG.KIDS[0].name;
+  $main.innerHTML = `<div class="card"><select id="ks">${CONFIG.KIDS.map(k => `<option ${k.name === sel ? 'selected' : ''}>${esc(k.name)}</option>`).join('')}</select><button class="btn sec" id="rf">🔄 Aktualisieren</button><div class="status" id="st"></div></div><div id="pv">Lädt …</div>`;
+  document.getElementById('ks').onchange = e => { sessionStorage.setItem('eng_pkid', e.target.value); drawParent(); };
+  document.getElementById('rf').onclick = async () => { document.getElementById('st').textContent = 'lädt …'; await flushQueue(); await refreshRemote(true); drawParent(); };
+  drawParent();
+  refreshRemote(true).then(() => drawParent());
+}
+function drawParent() {
+  const pv = document.getElementById('pv'); if (!pv) return;
+  const kid = document.getElementById('ks').value;
+  document.getElementById('st').textContent = 'Google Sheet: ' + remoteStatus + (lsGet('eng_queue', []).length ? ' · ' + lsGet('eng_queue', []).length + ' Ergebnis(se) warten aufs Senden' : '');
+  const rows = allRows(kid);
+  if (!rows.length) { pv.innerHTML = '<div class="card mut">Noch keine Ergebnisse für ' + esc(kid) + '.</div>'; return; }
+  const mins = Math.round(rows.reduce((s, r) => s + r.seconds, 0) / 60);
+  const graded = rows.filter(r => r.topic !== 'write');
+  const avg = graded.length ? Math.round(graded.reduce((s, r) => s + r.percent, 0) / graded.length) : 0;
+  const days = new Set(rows.map(r => new Date(r.ts).toDateString())).size;
+  const best = bestByEx(rows);
+  let html = `<div class="card"><b>${esc(kid)}</b><table><tr><td>Übungen gemacht</td><td><b>${rows.length}</b></td></tr><tr><td>Übungszeit gesamt</td><td><b>${mins} Min.</b></td></tr><tr><td>Tage mit Übung</td><td><b>${days}</b></td></tr><tr><td>Ø richtig</td><td><b>${graded.length ? avg + ' %' : '–'}</b></td></tr><tr><td>Zuletzt aktiv</td><td><b>${fmtDate(rows[0].ts)}</b></td></tr></table></div>`;
+  html += '<div class="card"><b>Fortschritt nach Thema</b>' + TOPICS.map(t => {
+    const exs = topicExercises(t.id);
+    const done = exs.filter(e => (best[e.id] || {}).best >= 80).length;
+    const tr = exs.map(e => { const b = best[e.id]; return `<tr><td>${esc(e.title)}</td><td>${b ? b.n + '×' : '–'}</td><td>${b ? `<span class="badge ${cls(b.best)}">${b.best} %</span>` : ''}</td><td>${b ? b.last + ' %' : ''}</td></tr>`; }).join('');
+    return `<details><summary>${t.icon} ${esc(t.title)} – <b>${done}/${exs.length}</b> geschafft</summary><table><tr><th>Übung</th><th>Mal</th><th>Beste</th><th>Letzte</th></tr>${tr}</table></details>`;
+  }).join('') + '</div>';
+  const cnt = {};
+  graded.forEach(r => r.mistakes.split('\n').filter(Boolean).forEach(m => { const key = m.split(' → ')[0]; cnt[key] = cnt[key] || { n: 0, ex: m }; cnt[key].n++; cnt[key].ex = m; }));
+  const top = Object.values(cnt).sort((a, b) => b.n - a.n).slice(0, 12);
+  if (top.length) html += '<div class="card"><b>Häufigste Fehler</b><div class="mist">' + top.map(t => `${t.n}× ${esc(t.ex)}`).join('\n') + '</div></div>';
+  const texts = rows.filter(r => r.text);
+  if (texts.length) html += '<div class="card"><b>Geschriebene Texte</b>' + texts.map(r => `<details><summary>${fmtDate(r.ts)} – ${esc(r.exTitle)}</summary><div class="mist">${esc(r.text)}</div>${r.mistakes ? `<div class="mist">⚠️ ${esc(r.mistakes)}</div>` : ''}</details>`).join('') + '</div>';
+  html += '<div class="card"><b>Letzte Übungen</b>' + rows.slice(0, 30).map(r => `<details><summary>${fmtDate(r.ts)} · ${esc(r.exTitle || r.exId)} · <span class="badge ${cls(r.percent)}">${r.percent} %</span> · ${Math.max(1, Math.round(r.seconds / 60))} Min.</summary>${r.mistakes ? `<div class="mist">${esc(r.mistakes)}</div>` : '<div class="mut">Keine Fehler.</div>'}</details>`).join('') + '</div>';
+  html += '<button class="btn sec" onclick="sessionStorage.removeItem(\'eng_parent\');go(\'\')">Eltern-Bereich verlassen</button>';
+  pv.innerHTML = html;
+}
+
+render();
+refreshRemote(true);
+flushQueue();
+
+</script>
+</body>
+</html>
